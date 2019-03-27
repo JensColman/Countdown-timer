@@ -46,7 +46,7 @@ self.addEventListener("activate", function(e) {
                return Promise.all(cacheNames.map(function(thisCacheName) {
                     // Hier wordt nagekeken of er versies zijn die verschillen van de huidige cacheName.
                     if (thisCacheName !== cacheName) {
-                         console.log("[serviceWorker] Removing cached files from ", thisCacheName);
+                         console.log("[serviceWorker] Removing cached files from " + thisCacheName);
                          // Hier worden de caches verwijderd die niet overeenkomen met de huidige cacheName.
                          return caches.delete(thisCacheName);
                     }
