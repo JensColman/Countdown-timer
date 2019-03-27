@@ -390,16 +390,28 @@ calculateTime.addEventListener("click", function() {
 
 // ---------------------- Serviceworker ---------------------- \\
 
-console.log("%c %s", consoleCss2, "serviceWorker: ");
+// console.log("%c %s", consoleCss2, "serviceWorker: ");
+// if ("serviceWorker" in navigator) {
+//      navigator.serviceWorker
+//           .register("../scripts/serviceWorker.js", {
+//                scope: "../scripts/"
+//           })
+//           .then(function(registration) {
+//                console.log("serviceWorker registered. ", registration);
+//           })
+//           .catch(function(err) {
+//                console.log("serviceWorker failed to register. ", err);
+//           });
+// }
+
+console.log("%c %s", consoleCss2, "ServiceWorker: ");
 if ("serviceWorker" in navigator) {
-     navigator.serviceWorker
-          .register("../scripts/serviceWorker.js", {
-               scope: "../scripts/"
-          })
-          .then(function(registration) {
-               console.log("serviceWorker registered. ", registration);
-          })
-          .catch(function(err) {
-               console.log("serviceWorker failed to register. ", err);
-          });
+	navigator.serviceWorker
+		.register("../scripts/serviceWorker.js", {scope: "../scripts/"})
+		.then(function(registration) {
+		console.log("Serviceworker registered. ", registration);
+	})
+	.catch(function(err) {
+		console.log("Serviceworker failed to register. ", err);
+	});
 }
