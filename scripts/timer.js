@@ -396,7 +396,7 @@ if ("serviceWorker" in navigator) {
 	navigator.serviceWorker
 		.register("/Countdown-timer/scripts/service-worker.js", {scope: "/Countdown-timer/scripts/"})
 		.then(function(registration) {
-		console.log("Serviceworker registered. ", registration);
+		console.log("Serviceworker registered. ");
 	})
 	.catch(function(err) {
 		console.log("Serviceworker failed to register. ", err);
