@@ -47,7 +47,7 @@ self.addEventListener("activate", function(e) {
                return Promise.all(cacheNames.map(function(thisCacheName) {
                     // Hier wordt nagekeken of er versies zijn die verschillen van de huidige cacheName.
                     if (thisCacheName !== cacheName) {
-                         console.log("[serviceWorker] Removing cached files from " + thisCacheName);
+                         console.log("[serviceWorker] Removing cached files from ", thisCacheName);
                          // Hier worden de caches verwijderd die niet overeenkomen met de huidige cacheName.
                          return caches.delete(thisCacheName);
                     }
@@ -59,4 +59,13 @@ self.addEventListener("activate", function(e) {
 // Fetching van serviceworker.
 self.addEventListener("fetch", function(e) {
 	console.log("[serviceWorker] Fetching ", e.request.url);
+     e.respondWith(
+          cashes.match(e.request).then(function(response) {
+               if (response) {
+                    console.log("[serviceWorker] Found in cache ", e.request.url);
+                    return response;
+               }
+               return fetch(e.request);
+          })
+     );
 });
