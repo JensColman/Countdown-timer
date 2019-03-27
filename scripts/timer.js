@@ -391,16 +391,16 @@ calculateTime.addEventListener("click", function() {
 // ---------------------- Serviceworker ---------------------- \\
 
 // console.log("%c %s", consoleCss2, "ServiceWorker: ");
-// if ("serviceWorker" in navigator) {
-// 	navigator.serviceWorker
-// 		.register("../scripts/service-worker.js", {scope: "../scripts/"})
-// 		.then(function(registration) {
-// 		console.log("Serviceworker registered. ", registration);
-// 	})
-// 	.catch(function(err) {
-// 		console.log("Serviceworker failed to register. ", err);
-// 	});
-// }
+if ("serviceWorker" in navigator) {
+	navigator.serviceWorker
+		.register("/Countdown-timer/scripts/service-worker.js", {scope: "/Countdown-timer/scripts/"})
+		.then(function(registration) {
+		console.log("Serviceworker registered. ", registration);
+	})
+	.catch(function(err) {
+		console.log("Serviceworker failed to register. ", err);
+	});
+}
 
 
 // console.log("%c %s", consoleCss2, "ServiceWorker: ");
