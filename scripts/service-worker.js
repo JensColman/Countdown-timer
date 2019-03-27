@@ -1,12 +1,12 @@
 // Applicatienaam, moet consistent blijven.
-var APP_PREFIX = "Countdown-Timer_";
+var APP_PREFIX = "CountdownTimer_";
 // Cache version.
 var VERSION = "Version_01";
 
 var cacheName = APP_PREFIX + VERSION;
 // Aanduiden welke files er gecached moeten worden.
 var cacheFiles = [
-     "/Countdown-timer/",
+     /*"/Countdown-timer/",
      "/Countdown-timer/index.html",
 	"/Countdown-timer/challenges.html",
 	"/Countdown-timer/extraIdeas.html",
@@ -17,7 +17,7 @@ var cacheFiles = [
 	"/Countdown-timer/scripts/timer.js",
      "/Countdown-timer/styles/",
 	"/Countdown-timer/styles/index.scss",
-	"https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"
+	"https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"*/
 ];
 
 
