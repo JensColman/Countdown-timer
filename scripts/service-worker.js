@@ -2,7 +2,7 @@
 var APP_PREFIX = "CountdownTimer_";
 // Cache version.
 var VERSION = "Version_01";
-
+// Cache naam + versie.
 var cacheName = APP_PREFIX + VERSION;
 // Aanduiden welke files er gecached moeten worden.
 var cacheFiles = [
@@ -28,6 +28,7 @@ self.addEventListener("install", function(e) {
 	e.waitUntil(
 		caches.open(cacheName).then(function(cache) {
 			console.log("[serviceWorker] Caching cacheFiles " + cacheName);
+               // Hier wordt alle files die opgegeven zijn in cacheFiles opgeslagen in de cache.
 			return cache.addAll(cacheFiles);
 		})
 	);
@@ -36,6 +37,22 @@ self.addEventListener("install", function(e) {
 // Activeren van serviceworker.
 self.addEventListener("activate", function(e) {
 	console.log("[serviceWorker] Activated");
+
+     // Dit zorgt ervoor dat files van oude caches niet bewaard blijven.
+     e.waitUntil(
+          // Hier worden alle keys en cache overlopen.
+          caches.keys().then(function(cacheNames) {
+               // Hier wordt er gelooped door de cacheNames om te zien of er geen verouderde bestanden bijzitten.
+               return Promise.all(cacheNames.map(function(thisCacheName) {
+                    // Hier wordt nagekeken of er versies zijn die verschillen van de huidige cacheName.
+                    if (thisCacheName !== cacheName) {
+                         console.log("[serviceWorker] Removing cached files from ", thisCacheName);
+                         // Hier worden de caches verwijderd die niet overeenkomen met de huidige cacheName.
+                         return caches.delete(thisCacheName);
+                    }
+               }));
+          })
+     );
 });
 
 // Fetching van serviceworker.
