@@ -59,7 +59,7 @@ self.addEventListener("fetch", function(e) {
      // e.respondWidth Responds to the fetch event.
      e.respondWith(
           // Check in cache for the request being made.
-          cashes.match(e.request).then(function(response) {
+          caches.match(e.request).then(function(response) {
                // If the request is in the cache.
                if (response) {
                     console.log("[serviceWorker] Found in cache ", e.request.url);
