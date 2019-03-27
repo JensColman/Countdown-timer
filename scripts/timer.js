@@ -429,10 +429,10 @@ var get = function(url) {
 };
 
 // Hier kan je de externe link opvragen.
-get('https://api.nasa.gov/planetary/earth/imagery?api_key=fWfSMcDzyHfMuH3BW6jiIUBYaj3hKRyKBRTBqgEQ')
+get('https://cdn.britannica.com/55/174255-004-9A4971E9.jpg')
   .then(function(response) {
     // There is an issue with the image being pulled from the API, so using a different one instead.
-    document.getElementsByClassName('targetImage')[0].src = "https://api.nasa.gov/images/earth.png";
+    document.getElementsByClassName('targetImage')[0].src = "https://cdn.britannica.com/55/174255-004-9A4971E9.jpg";
 
   })
   .catch(function(err) {
