@@ -1,5 +1,9 @@
-// Cache version
-var cacheName = "v1";
+// Applicatienaam, moet consistent blijven.
+var APP_PREFIX = "Countdown-Timer_";
+// Cache version.
+var VERSION = "Version_01";
+
+var cacheName = APP_PREFIX + VERSION;
 // Aanduiden welke files er gecached moeten worden.
 var cacheFiles = [
      "/Countdown-timer/",
@@ -23,7 +27,7 @@ self.addEventListener("install", function(e) {
 	// De installatie zal moeten wachten tot dit is uitgevoerd.
 	e.waitUntil(
 		caches.open(cacheName).then(function(cache) {
-			console.log("[serviceWorker] Caching cacheFiles");
+			console.log("[serviceWorker] Caching cacheFiles " + cacheName);
 			return cache.addAll(cacheFiles);
 		})
 	);
