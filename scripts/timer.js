@@ -42,6 +42,19 @@ var dateOptions = {
 
 // ---------------------- Functions ---------------------- \\
 
+// Vraag permissie om notificaties weer te geven.
+Notification.requestPermission().then(function(result) {
+  if (result === 'denied') {
+    console.log('Permission wasn\'t granted. Allow a retry.');
+    return;
+  }
+  if (result === 'default') {
+    console.log('The permission request was dismissed.');
+    return;
+  }
+  // Do something with the granted permission.
+});
+
 // Plaatst een lege teller in op de pagina om weer te geven dat er geen timer aan het aftellen is.
 function importMainContent1() {
      document.getElementById("main").innerHTML =
@@ -153,8 +166,8 @@ function isItDoneYet() {
                Notification.requestPermission(function(status) {
                     // status is "granted", if accepted by user
                     var n = new Notification("Time's up!", {
-                         body: "The timer you set has run out."
-                         //icon: '/path/to/icon.png' // optional
+                         body: "The timer you set has run out.",
+                         icon: "https://img.icons8.com/metro/52/000000/time.png" // optional
                     });
                });
           }
@@ -372,16 +385,16 @@ calculateTime.addEventListener("click", function() {
 
 // ---------------------- Serviceworker ---------------------- \\
 
-console.log("%c %s", consoleCss2, "ServiceWorker: ");
-if ("serviceWorker" in navigator) {
-     navigator.serviceWorker
-          .register("../scripts/serviceWorker.js", {
-               scope: "../scripts/"
-          })
-          .then(function(registration) {
-               console.log("Serviceworker registered. ", registration);
-          })
-          .catch(function(err) {
-               console.log("Serviceworker failed to register. ", err);
-          });
-}
+// console.log("%c %s", consoleCss2, "ServiceWorker: ");
+// if ("serviceWorker" in navigator) {
+//      navigator.serviceWorker
+//           .register("../scripts/serviceWorker.js", {
+//                scope: "../scripts/"
+//           })
+//           .then(function(registration) {
+//                console.log("Serviceworker registered. ", registration);
+//           })
+//           .catch(function(err) {
+//                console.log("Serviceworker failed to register. ", err);
+//           });
+// }
