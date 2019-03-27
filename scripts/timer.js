@@ -393,8 +393,8 @@ calculateTime.addEventListener("click", function() {
 console.log("%c %s", consoleCss2, "serviceWorker: ");
 if ("serviceWorker" in navigator) {
      navigator.serviceWorker
-          .register("./serviceWorker.js", {
-               scope: "./"
+          .register("/serviceWorker.js", {
+               scope: "/"
           })
           .then(function(registration) {
                console.log("serviceWorker registered. ", registration);
