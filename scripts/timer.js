@@ -416,7 +416,7 @@ calculateTime.addEventListener("click", function() {
 // }
 
 
-console.log("%c %s", consoleCss2, "ServiceWorker: ");
-if (navigator.serviceWorker) {
-     navigator.serviceWorker.register('/Countdown-timer/scripts/service-worker.js', {scope: '/Countdown-timer/scripts/'});
-}
+// console.log("%c %s", consoleCss2, "ServiceWorker: ");
+// if (navigator.serviceWorker) {
+//      navigator.serviceWorker.register('/Countdown-timer/scripts/service-worker.js', {scope: '/Countdown-timer/scripts/'});
+// }
