@@ -33,6 +33,6 @@ self.addEventListener("activate", function(e) {
 });
 
 // Fetching van serviceworker.
-self.addEventListener("fetch", function(e) {
-	console.log("[serviceWorker] fetching ", e.request.url);
-});
+// self.addEventListener("fetch", function(e) {
+// 	console.log("[serviceWorker] fetching ", e.request.url);
+// });
