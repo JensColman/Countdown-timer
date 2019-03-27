@@ -406,7 +406,7 @@ calculateTime.addEventListener("click", function() {
 console.log("%c %s", consoleCss2, "ServiceWorker: ");
 if ("serviceWorker" in navigator) {
      console.log("CLIENT: serviceWorker registration in progress.");
-     navigator.serviceWorker.register("serviceWorker.js").then(function() {
+     navigator.serviceWorker.register("service-worker.js").then(function() {
           console.log("CLIENT: serviceWorker registration complete.");
      }, function() {
           console.log("CLIENT: serviceWorker registration failure.");
