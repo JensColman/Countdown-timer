@@ -390,8 +390,9 @@ calculateTime.addEventListener("click", function() {
 
 // ---------------------- Serviceworker ---------------------- \\
 
-// console.log("%c %s", consoleCss2, "ServiceWorker: ");
+console.log("%c %s", consoleCss2, "ServiceWorker: ");
 if ("serviceWorker" in navigator) {
+     // Gebruik een absolute path als je gebruik maakt van Github, anders werkt het niet! Zie https://gist.github.com/kosamari/7c5d1e8449b2fbc97d372675f16b566e voor meer info.
 	navigator.serviceWorker
 		.register("/Countdown-timer/scripts/service-worker.js", {scope: "/Countdown-timer/scripts/"})
 		.then(function(registration) {
@@ -402,18 +403,6 @@ if ("serviceWorker" in navigator) {
 	});
 }
 
-
-// console.log("%c %s", consoleCss2, "ServiceWorker: ");
-// if ("serviceWorker" in navigator) {
-//      console.log("CLIENT: serviceWorker registration in progress.");
-//      navigator.serviceWorker.register("service-worker.js").then(function() {
-//           console.log("CLIENT: serviceWorker registration complete.");
-//      }, function() {
-//           console.log("CLIENT: serviceWorker registration failure.");
-//      });
-// } else {
-//      console.log("CLIENT: serviceWorker is not supported.");
-// }
 
 
 // console.log("%c %s", consoleCss2, "ServiceWorker: ");
