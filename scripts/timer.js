@@ -13,6 +13,11 @@ console.log(
      consoleCss1,
      "- Timer laten afgaan als de pagina niet open is."
 );
+console.log(
+     "%c %s",
+     consoleCss1,
+     "---------- Gebruik notifications / Push API in combinatie Service Worker."
+);
 
 // End to do
 //console.log("");
