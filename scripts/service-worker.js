@@ -4,42 +4,20 @@ var APP_PREFIX = "CountdownTimer_";
 var VERSION = "Version_01";
 // Cache naam + versie.
 var cacheName = APP_PREFIX + VERSION;
-
-
-// Fetching van serviceworker.
-self.addEventListener("fetch", function(e) {
-	console.log("[serviceWorker] Fetching ", e.request.url);
-     // e.respondWidth Responds to the fetch event.
-     e.respondWith(
-          // Check in cache for the request being made.
-          cashes.match(e.request).then(function(response) {
-               // If the request is in the cache.
-               if (response) {
-                    console.log("[serviceWorker] Found in cache ", e.request.url);
-                    // Return the cached version.
-                    return response;
-               }
-               // If the request is NOT in the cache, fetch and cache.
-               var requestClone = e.request.clone();
-               fetch(requestClone).then(function(response) {
-                    if (!response) {
-                         console.log("[serviceWorker] No response from fetch");
-                         // Return the response.
-                         return response;
-                    }
-
-                    var responseClone = response.clone();
-                    //  Open the cache.
-                    caches.open(cacheName).then(function(cache) {
-                         cache.put(e.request, responseClone);
-                         return response;
-                    });
-               }).catch(function(err) {
-                    console.log("[serviceWorker] Error fetching & caching new data", err);
-               });
-          })
-     );
-});
+// Aanduiden welke files er gecached moeten worden.
+// Soms krijg ik een error in de console (Uncaught (in promise) TypeError: Request failed). Om dat op te lossen kan je de cacheFiles eens commenteren => opslaan => laden in het browser => commentatiëring wegdoen => opslaan => browser refreshen.
+var cacheFiles = [
+     "/Countdown-timer/",
+     "/Countdown-timer/index.html",
+	"/Countdown-timer/challenges.html",
+	"/Countdown-timer/extraIdeas.html",
+	"/Countdown-timer/usePoints.html",
+	"/Countdown-timer/videoResources.html",
+	"/Countdown-timer/scripts/index.js",
+	"/Countdown-timer/scripts/timer.js",
+	"/Countdown-timer/styles/index.css",
+	"https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"
+];
 
 // Installeren van serviceworker.
 self.addEventListener("install", function(e) {
@@ -75,19 +53,37 @@ self.addEventListener("activate", function(e) {
      );
 });
 
-// Aanduiden welke files er gecached moeten worden.
-// Soms krijg ik een error in de console (Uncaught (in promise) TypeError: Request failed). Om dat op te lossen kan je de cacheFiles eens commenteren => opslaan => laden in het browser => commentatiëring wegdoen => opslaan => browser refreshen.
-var cacheFiles = [
-     "/Countdown-timer/",
-     "/Countdown-timer/index.html",
-	"/Countdown-timer/challenges.html",
-	"/Countdown-timer/extraIdeas.html",
-	"/Countdown-timer/usePoints.html",
-	"/Countdown-timer/videoResources.html",
-	"/Countdown-timer/scripts/",
-	"/Countdown-timer/scripts/index.js",
-	"/Countdown-timer/scripts/timer.js",
-     "/Countdown-timer/styles/",
-	"/Countdown-timer/styles/index.scss",
-	"https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"
-];
+// Fetching van serviceworker.
+self.addEventListener("fetch", function(e) {
+	console.log("[serviceWorker] Fetching ", e.request.url);
+     // e.respondWidth Responds to the fetch event.
+     e.respondWith(
+          // Check in cache for the request being made.
+          cashes.match(e.request).then(function(response) {
+               // If the request is in the cache.
+               if (response) {
+                    console.log("[serviceWorker] Found in cache ", e.request.url);
+                    // Return the cached version.
+                    return response;
+               }
+               // If the request is NOT in the cache, fetch and cache.
+               var requestClone = e.request.clone();
+               fetch(requestClone).then(function(response) {
+                    if (!response) {
+                         console.log("[serviceWorker] No response from fetch");
+                         // Return the response.
+                         return response;
+                    }
+
+                    var responseClone = response.clone();
+                    //  Open the cache.
+                    caches.open(cacheName).then(function(cache) {
+                         cache.put(e.request, responseClone);
+                         return response;
+                    });
+               }).catch(function(err) {
+                    console.log("[serviceWorker] Error fetching & caching new data", err);
+               });
+          })
+     );
+});
