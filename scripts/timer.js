@@ -49,12 +49,12 @@ var dateOptions = {
 
 // Vraag permissie om notificaties weer te geven.
 Notification.requestPermission().then(function(result) {
-  if (result === 'denied') {
-    console.log('Permission wasn\'t granted. Allow a retry.');
+  if (result === "denied") {
+    console.log("Permission wasn't granted. Allow a retry.");
     return;
   }
-  if (result === 'default') {
-    console.log('The permission request was dismissed.');
+  if (result === "default") {
+    console.log("The permission request was dismissed.");
     return;
   }
   // Do something with the granted permission.
