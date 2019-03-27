@@ -4,22 +4,7 @@ var APP_PREFIX = "CountdownTimer_";
 var VERSION = "Version_01";
 // Cache naam + versie.
 var cacheName = APP_PREFIX + VERSION;
-// Aanduiden welke files er gecached moeten worden.
-// Soms krijg ik een error in de console (Uncaught (in promise) TypeError: Request failed). Om dat op te lossen kan je de cacheFiles eens commenteren => opslaan => laden in het browser => commentatiëring wegdoen => opslaan => browser refreshen.
-var cacheFiles = [
-     "/Countdown-timer/",
-     "/Countdown-timer/index.html",
-	"/Countdown-timer/challenges.html",
-	"/Countdown-timer/extraIdeas.html",
-	"/Countdown-timer/usePoints.html",
-	"/Countdown-timer/videoResources.html",
-	"/Countdown-timer/scripts/",
-	"/Countdown-timer/scripts/index.js",
-	"/Countdown-timer/scripts/timer.js",
-     "/Countdown-timer/styles/",
-	"/Countdown-timer/styles/index.scss",
-	"https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"
-];
+
 
 // Fetching van serviceworker.
 self.addEventListener("fetch", function(e) {
@@ -89,3 +74,20 @@ self.addEventListener("activate", function(e) {
           })
      );
 });
+
+// Aanduiden welke files er gecached moeten worden.
+// Soms krijg ik een error in de console (Uncaught (in promise) TypeError: Request failed). Om dat op te lossen kan je de cacheFiles eens commenteren => opslaan => laden in het browser => commentatiëring wegdoen => opslaan => browser refreshen.
+var cacheFiles = [
+     "/Countdown-timer/",
+     "/Countdown-timer/index.html",
+	"/Countdown-timer/challenges.html",
+	"/Countdown-timer/extraIdeas.html",
+	"/Countdown-timer/usePoints.html",
+	"/Countdown-timer/videoResources.html",
+	"/Countdown-timer/scripts/",
+	"/Countdown-timer/scripts/index.js",
+	"/Countdown-timer/scripts/timer.js",
+     "/Countdown-timer/styles/",
+	"/Countdown-timer/styles/index.scss",
+	"https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"
+];
