@@ -18,6 +18,11 @@ console.log(
      consoleCss1,
      "---------- Gebruik notifications / Push API in combinatie Service Worker."
 );
+console.log(
+     "%c %s",
+     consoleCss1,
+     "- Beschikbaar maken voor meerdere browsers."
+);
 
 // End to do
 //console.log("");
