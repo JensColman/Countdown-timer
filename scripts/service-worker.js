@@ -6,7 +6,7 @@ var VERSION = "Version_01";
 var cacheName = APP_PREFIX + VERSION;
 // Aanduiden welke files er gecached moeten worden.
 var cacheFiles = [
-     "/Countdown-timer/",
+     /*"/Countdown-timer/",
      "/Countdown-timer/index.html",
 	"/Countdown-timer/challenges.html",
 	"/Countdown-timer/extraIdeas.html",
@@ -17,7 +17,7 @@ var cacheFiles = [
 	"/Countdown-timer/scripts/timer.js",
      "/Countdown-timer/styles/",
 	"/Countdown-timer/styles/index.scss",
-	"https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"
+	"https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"*/
 ];
 
 
@@ -39,20 +39,20 @@ self.addEventListener("activate", function(e) {
 	console.log("[serviceWorker] Activated");
 
      // Dit zorgt ervoor dat files van oude caches niet bewaard blijven.
-     // e.waitUntil(
-     //      // Hier worden alle keys en cache overlopen.
-     //      caches.keys().then(function(cacheNames) {
-     //           // Hier wordt er gelooped door de cacheNames om te zien of er geen verouderde bestanden bijzitten.
-     //           return Promise.all(cacheNames.map(function(thisCacheName) {
-     //                // Hier wordt nagekeken of er versies zijn die verschillen van de huidige cacheName.
-     //                if (thisCacheName !== cacheName) {
-     //                     console.log("[serviceWorker] Removing cached files from " + thisCacheName);
-     //                     // Hier worden de caches verwijderd die niet overeenkomen met de huidige cacheName.
-     //                     return caches.delete(thisCacheName);
-     //                }
-     //           }));
-     //      })
-     // );
+     e.waitUntil(
+          // Hier worden alle keys en cache overlopen.
+          caches.keys().then(function(cacheNames) {
+               // Hier wordt er gelooped door de cacheNames om te zien of er geen verouderde bestanden bijzitten.
+               return Promise.all(cacheNames.map(function(thisCacheName) {
+                    // Hier wordt nagekeken of er versies zijn die verschillen van de huidige cacheName.
+                    if (thisCacheName !== cacheName) {
+                         console.log("[serviceWorker] Removing cached files from " + thisCacheName);
+                         // Hier worden de caches verwijderd die niet overeenkomen met de huidige cacheName.
+                         return caches.delete(thisCacheName);
+                    }
+               }));
+          })
+     );
 });
 
 // Fetching van serviceworker.
