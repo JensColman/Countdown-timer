@@ -19,11 +19,11 @@ var cacheFiles = [
 
 // Installeren van serviceworker.
 self.addEventListener("install", function(e) {
-	console.log("[serviceWorker] installed");
+	console.log("[serviceWorker] Installed");
 	// De installatie zal moeten wachten tot dit is uitgevoerd.
 	e.waitUntil(
 		caches.open(cacheName).then(function(cache) {
-			console.log("[serviceWorker] caching cacheFiles");
+			console.log("[serviceWorker] Caching cacheFiles");
 			return cache.addAll(cacheFiles);
 		})
 	);
@@ -31,10 +31,10 @@ self.addEventListener("install", function(e) {
 
 // Activeren van serviceworker.
 self.addEventListener("activate", function(e) {
-	console.log("[serviceWorker] activated");
+	console.log("[serviceWorker] Activated");
 });
 
 // Fetching van serviceworker.
 self.addEventListener("fetch", function(e) {
-	console.log("[serviceWorker] fetching ", e.request.url);
+	console.log("[serviceWorker] Fetching ", e.request.url);
 });
