@@ -393,7 +393,7 @@ calculateTime.addEventListener("click", function() {
 // console.log("%c %s", consoleCss2, "ServiceWorker: ");
 // if ("serviceWorker" in navigator) {
 // 	navigator.serviceWorker
-// 		.register("../scripts/serviceWorker.js", {scope: "../scripts/"})
+// 		.register("../scripts/service-worker.js", {scope: "../scripts/"})
 // 		.then(function(registration) {
 // 		console.log("Serviceworker registered. ", registration);
 // 	})
@@ -403,14 +403,20 @@ calculateTime.addEventListener("click", function() {
 // }
 
 
+// console.log("%c %s", consoleCss2, "ServiceWorker: ");
+// if ("serviceWorker" in navigator) {
+//      console.log("CLIENT: serviceWorker registration in progress.");
+//      navigator.serviceWorker.register("service-worker.js").then(function() {
+//           console.log("CLIENT: serviceWorker registration complete.");
+//      }, function() {
+//           console.log("CLIENT: serviceWorker registration failure.");
+//      });
+// } else {
+//      console.log("CLIENT: serviceWorker is not supported.");
+// }
+
+
 console.log("%c %s", consoleCss2, "ServiceWorker: ");
-if ("serviceWorker" in navigator) {
-     console.log("CLIENT: serviceWorker registration in progress.");
-     navigator.serviceWorker.register("service-worker.js").then(function() {
-          console.log("CLIENT: serviceWorker registration complete.");
-     }, function() {
-          console.log("CLIENT: serviceWorker registration failure.");
-     });
-} else {
-     console.log("CLIENT: serviceWorker is not supported.");
+if (navigator.serviceWorker) {
+     navigator.serviceWorker.register('/Countdown-timer/scripts/service-worker.js', {scope: '/Countdown-timer/scripts/'});
 }
