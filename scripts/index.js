@@ -19,25 +19,29 @@ function emptySidebarTimeSetting() {
      }
 }
 
-tijdBerekening();
+(function sidebarFunction() {
+     tijdBerekening();
 
-if (days >= 1) {
-     importSidebarContent();
-     console.log("Days");
-} else if (days <= 0 && hours >= 1) {
-     importSidebarContent();
-     console.log("Hours");
-} else if (hours <= 0 && minutes >= 1) {
-     importSidebarContent();
-     console.log("Minutes");
-} else if (minutes <= 0 && seconds >= 1) {
-     importSidebarContent();
-     console.log("Seconds");
-} else {
-     importSidebarContent();
-     emptySidebarTimeSetting();
-     console.log("Niets");
-}
+     if (days >= 1) {
+          importSidebarContent();
+          console.log("Days");
+     } else if (days <= 0 && hours >= 1) {
+          importSidebarContent();
+          console.log("Hours");
+     } else if (hours <= 0 && minutes >= 1) {
+          importSidebarContent();
+          console.log("Minutes");
+     } else if (minutes <= 0 && seconds >= 1) {
+          importSidebarContent();
+          console.log("Seconds");
+     } else {
+          importSidebarContent();
+          emptySidebarTimeSetting();
+          console.log("Niets");
+     }
+
+})();
+
 
 // Kijken of ik de tellerfunctie kan gebruiken.
 
