@@ -19,22 +19,7 @@ function emptySidebarTimeSetting() {
      }
 }
 
-// Eigen tijd opvragen.
-var now = new Date().getTime();
-// Parsed de ingestelde tijd om te kunnen gebruiken tijdens de bewerking.
-var countdownDate4 = Date.parse(window.localStorage.getItem("timerSetting"));
-// Berekenen hoeveel tijd er tussen de ingestelde- en de eigen tijd zit.
-var distance = countdownDate4 - now;
-// Resterende dagen berekenen.
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-// Resterende uren berekenen.
-var hours = Math.floor(
-     (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-);
-// Resterende minuten berekenen.
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-// Resterende seconden berekenen.
-var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+tijdBerekening();
 
 if (days >= 1) {
      importSidebarContent();

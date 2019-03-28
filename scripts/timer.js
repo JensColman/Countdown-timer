@@ -170,8 +170,7 @@ function showTimeSetting() {
      }
 }
 
-// Bereken of de timer al afgelopen is.
-function isItDoneYet() {
+function tijdBerekening() {
      // Parsed de ingestelde tijd om te kunnen gebruiken tijdens de bewerking.
      var countdownDate4 = Date.parse(window.localStorage.getItem("timerSetting"));
      // Berekenen hoeveel tijd er tussen de ingestelde- en de eigen tijd zit.
@@ -192,6 +191,11 @@ function isItDoneYet() {
      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
      // Resterende seconden berekenen.
      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+}
+
+// Bereken of de timer al afgelopen is.
+function isItDoneYet() {
+     tijdBerekening();
 
      // Logged de resterende tijd in de console.
      console.log(
