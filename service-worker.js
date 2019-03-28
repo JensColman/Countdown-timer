@@ -18,8 +18,6 @@ var cacheFiles = [
      "https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"
 ];
 
-console.log("%c %s", consoleCss2, "ServiceWorker: ");
-
 // Installeren van serviceworker.
 self.addEventListener("install", function(e) {
      console.log("[serviceWorker] Installed");
