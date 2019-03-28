@@ -83,11 +83,18 @@ function showTimeSettingSidebar() {
           localStorage.removeItem("timerSettingHours");
           localStorage.removeItem("timerSettingMinutes");
           localStorage.removeItem("timerSettingSeconds");
-          // Geeft een notificatie wanneer de timer gestopt is.
-          notificationTimerEnd();
+          // // Geeft een notificatie wanneer de timer gestopt is.
+          // notificationTimerEnd();
           console.log("Niets");
      }
 }
+
+
+// Uitzoeken hoe je de notificaties die je krijgt als je de pagina herlaad kunt uitzetten. En alleen laat zien als de timer is afgelopen.
+
+
+
+
 
 var timer2 = setInterval(function() {
      // Resterende tijd berekenen en opslaan in localstorage.
@@ -96,18 +103,18 @@ var timer2 = setInterval(function() {
      showTimeSettingSidebar();
 }, 1000);
 
-// // Controleert in de localstorage of er een datum is ingesteld in "timersetting".
-// if (localStorage.getItem("timerSetting") === null) {
-//      // Zet de timer placeholder op 0.
-//      emptySidebarTimeSetting();
-// } else {
-//      // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
-//      importSidebarContent();
-//
-//      var timer2 = setInterval(function() {
-//           // Resterende tijd berekenen en opslaan in localstorage.
-//           calculateRestingTime();
-//           // Berekend het enkelvoud of meervoud om te plaatsen in de HTML.
-//           showTimeSettingSidebar();
-//      }, 1000);
-// }
+// Controleert in de localstorage of er een datum is ingesteld in "timersetting".
+if (localStorage.getItem("timerSetting") === null) {
+     // Zet de timer placeholder op 0.
+     emptySidebarTimeSetting();
+} else {
+     // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
+     importSidebarContent();
+
+     var timer2 = setInterval(function() {
+          // Resterende tijd berekenen en opslaan in localstorage.
+          calculateRestingTime();
+          // Berekend het enkelvoud of meervoud om te plaatsen in de HTML.
+          showTimeSettingSidebar();
+     }, 1000);
+}
