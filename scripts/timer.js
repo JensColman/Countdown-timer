@@ -49,15 +49,15 @@ var dateOptions = {
 
 // Vraag permissie om notificaties weer te geven.
 Notification.requestPermission().then(function(result) {
-  if (result === "denied") {
-    console.log("Permission wasn't granted. Allow a retry.");
-    return;
-  }
-  if (result === "default") {
-    console.log("The permission request was dismissed.");
-    return;
-  }
-  // Do something with the granted permission.
+     if (result === "denied") {
+          console.log("Permission wasn't granted. Allow a retry.");
+          return;
+     }
+     if (result === "default") {
+          console.log("The permission request was dismissed.");
+          return;
+     }
+     // Do something with the granted permission.
 });
 
 // Plaatst een lege teller in op de pagina om weer te geven dat er geen timer aan het aftellen is.
@@ -395,39 +395,41 @@ calculateTime.addEventListener("click", function() {
 console.log("%c %s", consoleCss2, "ServiceWorker: ");
 if ("serviceWorker" in navigator) {
      // Gebruik een absolute path als je gebruik maakt van Github, anders werkt het niet! Zie https://gist.github.com/kosamari/7c5d1e8449b2fbc97d372675f16b566e voor meer info.
-	navigator.serviceWorker
-		.register("/Countdown-timer/service-worker.js", {scope: "/Countdown-timer/"})
-		.then(function(registration) {
-		console.log("[serviceWorker] Registered. ");
-	})
-	.catch(function(err) {
-		console.log("[serviceWorker] Failed to register. ", err);
-	});
+     navigator.serviceWorker
+          .register("/Countdown-timer/service-worker.js", {
+               scope: "/Countdown-timer/"
+          })
+          .then(function(registration) {
+               console.log("[serviceWorker] Registered. ");
+          })
+          .catch(function(err) {
+               console.log("[serviceWorker] Failed to register. ", err);
+          });
 }
 
 // ---------------------- HTTP request ---------------------- \\
 
 // Function to perform HTTP request
 var get = function(url) {
-  return new Promise(function(resolve, reject) {
+     return new Promise(function(resolve, reject) {
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                var result = xhr.responseText;
-                result = JSON.parse(result);
-                resolve(result);
-            } else {
-                reject(xhr);
-            }
-        }
-    };
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+               if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                         var result = xhr.responseText;
+                         result = JSON.parse(result);
+                         resolve(result);
+                    } else {
+                         reject(xhr);
+                    }
+               }
+          };
 
-    xhr.open("GET", url, true);
-    xhr.send();
+          xhr.open("GET", url, true);
+          xhr.send();
 
-  });
+     });
 };
 
 // // Hier kan je de externe link opvragen.
