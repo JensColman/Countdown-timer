@@ -455,7 +455,8 @@ var get = function(url) {
 
 // ---------------------- Push API ---------------------- \\
 
-if (!('PushManager' in window)) {
+// Zie https://blog.sessionstack.com/how-javascript-works-the-mechanics-of-web-push-notifications-290176c5c55d voor meer info.
+if ('PushManager' in window) {
   // Push isn't supported on this browser, disable or hide UI.
-  console.log("[PushManager] is not supported.");
+  console.log("[PushManager] PushManager is supported.");
 }
