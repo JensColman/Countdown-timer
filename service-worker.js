@@ -14,6 +14,7 @@ var cacheFiles = [
      "/Countdown-timer/videoResources.html",
      "/Countdown-timer/scripts/index.js",
      "/Countdown-timer/scripts/timer.js",
+     "/Countdown-timer/scripts/serviceWorkerCode.js",
      "/Countdown-timer/styles/index.css",
      "https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"
 ];
