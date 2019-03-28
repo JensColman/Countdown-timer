@@ -30,36 +30,54 @@ var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 // Resterende seconden berekenen.
 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-switch (true) {
-     case (days >= 1):
-          importSidebarContent();
-          console.log("Days");
-
-          break;
-
-     case (days <= 0 && hours >= 1):
-          importSidebarContent();
-          console.log("Hours");
-
-          break;
-
-     case (hours <= 0 && minutes >= 1):
-          importSidebarContent();
-          console.log("Minutes");
-
-          break;
-
-     case (minutes <= 0 && seconds >= 1):
-          importSidebarContent();
-          console.log("Seconds");
-
-          break;
-
-     default:
-          importSidebarContent();
-          emptySidebarTimeSetting();
-          console.log("Niets");
+if (days >= 1) {
+     importSidebarContent();
+     console.log("Days");
+} else if (days <= 0 && hours >= 1) {
+     importSidebarContent();
+     console.log("Hours");
+} else if (hours <= 0 && minutes >= 1) {
+     importSidebarContent();
+     console.log("Minutes");
+} else if (minutes <= 0 && seconds >= 1) {
+     importSidebarContent();
+     console.log("Seconds");
+} else {
+     importSidebarContent();
+     emptySidebarTimeSetting();
+     console.log("Niets");
 }
+
+// switch (true) {
+//      case (days >= 1):
+//           importSidebarContent();
+//           console.log("Days");
+//
+//           break;
+//
+//      case (days <= 0 && hours >= 1):
+//           importSidebarContent();
+//           console.log("Hours");
+//
+//           break;
+//
+//      case (hours <= 0 && minutes >= 1):
+//           importSidebarContent();
+//           console.log("Minutes");
+//
+//           break;
+//
+//      case (minutes <= 0 && seconds >= 1):
+//           importSidebarContent();
+//           console.log("Seconds");
+//
+//           break;
+//
+//      default:
+//           importSidebarContent();
+//           emptySidebarTimeSetting();
+//           console.log("Niets");
+// }
 
 // Geeft de resterende tijd weer in de nog-in-te-vullen timer.
 //function showTimeSetting() {
