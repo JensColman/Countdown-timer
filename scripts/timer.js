@@ -1,4 +1,5 @@
 /*jshint esversion: 6 */
+
 // ---------------------- To do ---------------------- \\
 
 var consoleCss1 = "background: #222; color: #BADA55; margin-bottom: 0.3em;";
