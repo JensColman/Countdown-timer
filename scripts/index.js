@@ -19,29 +19,38 @@ function emptySidebarTimeSetting() {
      }
 }
 
-(function sidebarFunction() {
-     tijdBerekening();
+// Parsed de ingestelde tijd om te kunnen gebruiken tijdens de bewerking.
+var countdownDate4 = Date.parse(window.localStorage.getItem("timerSetting"));
+// Berekenen hoeveel tijd er tussen de ingestelde- en de eigen tijd zit.
+var distance = countdownDate4 - now;
+// Resterende dagen berekenen.
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+// Resterende uren berekenen.
+var hours = Math.floor(
+     (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+);
+// Resterende minuten berekenen.
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+// Resterende seconden berekenen.
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-     if (days >= 1) {
-          importSidebarContent();
-          console.log("Days");
-     } else if (days <= 0 && hours >= 1) {
-          importSidebarContent();
-          console.log("Hours");
-     } else if (hours <= 0 && minutes >= 1) {
-          importSidebarContent();
-          console.log("Minutes");
-     } else if (minutes <= 0 && seconds >= 1) {
-          importSidebarContent();
-          console.log("Seconds");
-     } else {
-          importSidebarContent();
-          emptySidebarTimeSetting();
-          console.log("Niets");
-     }
-
-})();
-
+if (days >= 1) {
+     importSidebarContent();
+     console.log("Days");
+} else if (days <= 0 && hours >= 1) {
+     importSidebarContent();
+     console.log("Hours");
+} else if (hours <= 0 && minutes >= 1) {
+     importSidebarContent();
+     console.log("Minutes");
+} else if (minutes <= 0 && seconds >= 1) {
+     importSidebarContent();
+     console.log("Seconds");
+} else {
+     importSidebarContent();
+     emptySidebarTimeSetting();
+     console.log("Niets");
+}
 
 // Kijken of ik de tellerfunctie kan gebruiken.
 
