@@ -121,26 +121,38 @@ function showTimeSetting() {
      document.getElementById("days").innerHTML = window.localStorage.getItem(
           "timerSettingDays"
      );
-     document.getElementById("days2").innerHTML = function() {
-          // Enkelvoud en meervoud data.
-          if (window.localStorage.getItem("timerSettingDays") === 1) {
-               return " day,";
-          } else {
-               return " days,";
-          }
-     };
+     if (window.localStorage.getItem("timerSettingDays") === 1) {
+          document.getElementById("days2").innerHTML = " day, ";
+     } else {
+          document.getElementById("days2").innerHTML = " days, ";
+     }
+
      document.getElementById("hours").innerHTML = window.localStorage.getItem(
           "timerSettingHours"
      );
-     document.getElementById("hours2").innerHTML = " hours, ";
+     if (window.localStorage.getItem("timerSettingHours") === 1) {
+          document.getElementById("hours2").innerHTML = " hour, ";
+     } else {
+          document.getElementById("hours2").innerHTML = " hours, ";
+     }
+
      document.getElementById("minutes").innerHTML = window.localStorage.getItem(
           "timerSettingMinutes"
      );
-     document.getElementById("minutes2").innerHTML = " minutes and ";
+     if (window.localStorage.getItem("timerSettingMinutes") === 1) {
+          document.getElementById("minutes2").innerHTML = " minute and ";
+     } else {
+          document.getElementById("minutes2").innerHTML = " minutes and ";
+     }
+
      document.getElementById("seconds").innerHTML = window.localStorage.getItem(
           "timerSettingSeconds"
      );
-     document.getElementById("seconds2").innerHTML = " seconds left";
+     if (window.localStorage.getItem("timerSettingSeconds") === 1) {
+          document.getElementById("minutes2").innerHTML = " second left";
+     } else {
+          document.getElementById("minutes2").innerHTML = " seconds left";
+     }
 }
 
 // Bereken of de timer al afgelopen is.
