@@ -4,7 +4,9 @@
 
 // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
 function importSidebarContent() {
-     document.getElementById("sidebar").innerHTML = '<h5><span id="date"></span><span id="date-hour"></span><br></h5><h6>remaining</h6>';
+     if (document.getElementById("sidebar")) {
+          document.getElementById("sidebar").innerHTML = '<h5><span id="date"></span><span id="date-hour"></span><br></h5><h6>remaining</h6>';
+     }
 }
 
 // Zet de timer placeholder op 0.
