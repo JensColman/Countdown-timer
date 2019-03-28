@@ -23,6 +23,16 @@ console.log(
      consoleCss1,
      "- Beschikbaar maken voor meerdere browsers."
 );
+console.log(
+     "%c %s",
+     consoleCss1,
+     "- Timer in het klein afspelen op de andere pagina's."
+);
+console.log(
+     "%c %s",
+     consoleCss1,
+     "- Als er 1 dag op de teller staat; vervang 'days' met 'day'."
+);
 
 // End to do
 //console.log("");
