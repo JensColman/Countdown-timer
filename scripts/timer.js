@@ -404,7 +404,7 @@ calculateTime.addEventListener("click", function() {
 // Hiermee kan de timer verder lopen als je geen internet meer hebt.
 // Zie https://github.com/ireade/boilerplate-service-worker voor meer info.
 if ("serviceWorker" in navigator) {
-     console.log("%c %s", consoleCss2, "ServiceWorker registration: ");
+     console.log("%c %s", consoleCss2, "ServiceWorker: ");
      // Gebruik een absolute path als je gebruik maakt van Github, anders werkt het niet! Zie https://gist.github.com/kosamari/7c5d1e8449b2fbc97d372675f16b566e voor meer info.
      navigator.serviceWorker
           .register("/Countdown-timer/service-worker.js", {
