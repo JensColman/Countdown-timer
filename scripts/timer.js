@@ -61,11 +61,11 @@ var dateOptions = {
 // Vraag permissie om notificaties weer te geven.
 Notification.requestPermission().then(function(result) {
      if (result === "denied") {
-          console.log("Permission wasn't granted. Allow a retry.");
+          console.log("[Notification] Permission wasn't granted. Allow a retry.");
           return;
      }
      if (result === "default") {
-          console.log("The permission request was dismissed.");
+          console.log("[Notification] The permission request was dismissed.");
           return;
      }
      // Do something with the granted permission.
@@ -404,7 +404,6 @@ calculateTime.addEventListener("click", function() {
 // Hiermee kan de timer verder lopen als je geen internet meer hebt.
 // Zie https://github.com/ireade/boilerplate-service-worker voor meer info.
 if ("serviceWorker" in navigator) {
-     console.log("%c %s", consoleCss2, "ServiceWorker: ");
      // Gebruik een absolute path als je gebruik maakt van Github, anders werkt het niet! Zie https://gist.github.com/kosamari/7c5d1e8449b2fbc97d372675f16b566e voor meer info.
      navigator.serviceWorker
           .register("/Countdown-timer/service-worker.js", {
@@ -456,8 +455,7 @@ var get = function(url) {
 
 // ---------------------- Push API ---------------------- \\
 
-console.log("%c %s", consoleCss2, "PushManager: ");
 if (!('PushManager' in window)) {
   // Push isn't supported on this browser, disable or hide UI.
-  console.log("PushManager is not supported.");
+  console.log("[PushManager] is not supported.");
 }
