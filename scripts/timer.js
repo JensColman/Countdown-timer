@@ -11,7 +11,7 @@ console.log("%c %s", consoleCss1, "To do:");
 console.log(
      "%c %s",
      consoleCss1,
-     "- Timer laten afgaan als de pagina niet open is."
+     "- Timer laten afgaan als de pagina niet open is (door gebruik te maken van systeemnotificaties ipv browsernotificaties)."
 );
 console.log(
      "%c %s",
