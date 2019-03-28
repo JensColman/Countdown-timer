@@ -59,32 +59,32 @@ var dateOptions = {
 // ---------------------- Functions ---------------------- \\
 
 // Vraag permissie om notificaties weer te geven.
-// Notification.requestPermission().then(function(result) {
-//      if (result === "denied") {
-//           console.log("Permission wasn't granted. Allow a retry.");
-//           return;
-//      }
-//      if (result === "default") {
-//           console.log("The permission request was dismissed.");
-//           return;
-//      }
-//      // Do something with the granted permission.
-// });
+Notification.requestPermission().then(function(result) {
+     if (result === "denied") {
+          console.log("Permission wasn't granted. Allow a retry.");
+          return;
+     }
+     if (result === "default") {
+          console.log("The permission request was dismissed.");
+          return;
+     }
+     // Do something with the granted permission.
+});
 
-const askPermission = () => {
-     return new Promise((resolve, reject) => {
-          const permissionResult = Notification.requestPermission((result) => {
-               resolve(result);
-          });
-          if (permissionResult) {
-               permissionResult.then(resolve, reject);
-          }
-     }).then((permissionResult) => {
-          if (permissionResult !== 'granted') {
-               throw new Error('Permission denied');
-          }
-     });
-};
+// const askPermission = () => {
+//      return new Promise((resolve, reject) => {
+//           const permissionResult = Notification.requestPermission((result) => {
+//                resolve(result);
+//           });
+//           if (permissionResult) {
+//                permissionResult.then(resolve, reject);
+//           }
+//      }).then((permissionResult) => {
+//           if (permissionResult !== 'granted') {
+//                throw new Error('Permission denied');
+//           }
+//      });
+// };
 
 // Plaatst een lege teller in op de pagina om weer te geven dat er geen timer aan het aftellen is.
 function importMainContent1() {
