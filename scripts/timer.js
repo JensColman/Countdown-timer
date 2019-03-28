@@ -121,7 +121,7 @@ function showTimeSetting() {
      document.getElementById("days").innerHTML = window.localStorage.getItem(
           "timerSettingDays"
      );
-     if (window.localStorage.getItem("timerSettingDays") === 1) {
+     if (window.localStorage.getItem("timerSettingDays") == 1) {
           document.getElementById("days2").innerHTML = " day, ";
      } else {
           document.getElementById("days2").innerHTML = " days, ";
@@ -130,7 +130,7 @@ function showTimeSetting() {
      document.getElementById("hours").innerHTML = window.localStorage.getItem(
           "timerSettingHours"
      );
-     if (window.localStorage.getItem("timerSettingHours") === 1) {
+     if (window.localStorage.getItem("timerSettingHours") == 1) {
           document.getElementById("hours2").innerHTML = " hour, ";
      } else {
           document.getElementById("hours2").innerHTML = " hours, ";
@@ -139,7 +139,7 @@ function showTimeSetting() {
      document.getElementById("minutes").innerHTML = window.localStorage.getItem(
           "timerSettingMinutes"
      );
-     if (window.localStorage.getItem("timerSettingMinutes") === 1) {
+     if (window.localStorage.getItem("timerSettingMinutes") == 1) {
           document.getElementById("minutes2").innerHTML = " minute and ";
      } else {
           document.getElementById("minutes2").innerHTML = " minutes and ";
@@ -148,10 +148,10 @@ function showTimeSetting() {
      document.getElementById("seconds").innerHTML = window.localStorage.getItem(
           "timerSettingSeconds"
      );
-     if (window.localStorage.getItem("timerSettingSeconds") === 1) {
-          document.getElementById("minutes2").innerHTML = " second left";
+     if (window.localStorage.getItem("timerSettingSeconds") == 1) {
+          document.getElementById("seconds2").innerHTML = " second left";
      } else {
-          document.getElementById("minutes2").innerHTML = " seconds left";
+          document.getElementById("seconds2").innerHTML = " seconds left";
      }
 }
 
