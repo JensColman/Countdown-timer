@@ -13,56 +13,56 @@ function emptySidebarTimeSetting() {
      document.getElementById("date-hour").innerHTML = "days";
 }
 
-// Eigen tijd opvragen.
-var now = new Date().getTime();
-// Parsed de ingestelde tijd om te kunnen gebruiken tijdens de bewerking.
-var countdownDate4 = Date.parse(window.localStorage.getItem("timerSetting"));
-// Berekenen hoeveel tijd er tussen de ingestelde- en de eigen tijd zit.
-var distance = countdownDate4 - now;
-// Resterende dagen berekenen.
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-// Resterende uren berekenen.
-var hours = Math.floor(
-     (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-);
-// Resterende minuten berekenen.
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-// Resterende seconden berekenen.
-var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-switch (true) {
-     case (days >= 1):
-          importSidebarContent();
-          console.log("Days");
-
-          break;
-
-     case (days <= 0 && hours >= 1):
-          importSidebarContent();
-          console.log("Hours");
-
-          break;
-
-     case (hours <= 0 && minutes >= 1):
-          importSidebarContent();
-          console.log("Minutes");
-
-          break;
-
-     case (minutes <= 0 && seconds >= 1):
-          importSidebarContent();
-          console.log("Seconds");
-
-          break;
-
-     default:
-          importSidebarContent();
-          emptySidebarTimeSetting();
-          console.log("Niets");
-}
+// // Eigen tijd opvragen.
+// var now = new Date().getTime();
+// // Parsed de ingestelde tijd om te kunnen gebruiken tijdens de bewerking.
+// var countdownDate4 = Date.parse(window.localStorage.getItem("timerSetting"));
+// // Berekenen hoeveel tijd er tussen de ingestelde- en de eigen tijd zit.
+// var distance = countdownDate4 - now;
+// // Resterende dagen berekenen.
+// var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+// // Resterende uren berekenen.
+// var hours = Math.floor(
+//      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+// );
+// // Resterende minuten berekenen.
+// var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+// // Resterende seconden berekenen.
+// var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+//
+// switch (true) {
+//      case (days >= 1):
+//           importSidebarContent();
+//           console.log("Days");
+//
+//           break;
+//
+//      case (days <= 0 && hours >= 1):
+//           importSidebarContent();
+//           console.log("Hours");
+//
+//           break;
+//
+//      case (hours <= 0 && minutes >= 1):
+//           importSidebarContent();
+//           console.log("Minutes");
+//
+//           break;
+//
+//      case (minutes <= 0 && seconds >= 1):
+//           importSidebarContent();
+//           console.log("Seconds");
+//
+//           break;
+//
+//      default:
+//           importSidebarContent();
+//           emptySidebarTimeSetting();
+//           console.log("Niets");
+// }
 
 // Geeft de resterende tijd weer in de nog-in-te-vullen timer.
-function showTimeSetting() {
+//function showTimeSetting() {
 
      // // Eigen tijd opvragen.
      // var now = new Date().getTime();
@@ -150,4 +150,4 @@ function showTimeSetting() {
      // } else {
      //      document.getElementById("seconds2").innerHTML = " seconds left";
      // }
-}
+//}
