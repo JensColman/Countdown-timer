@@ -460,5 +460,4 @@ console.log("%c %s", consoleCss2, "PushManager: ");
 if (!('PushManager' in window)) {
   // Push isn't supported on this browser, disable or hide UI.
   console.log("PushManager is not supported.");
-  return;
 }
