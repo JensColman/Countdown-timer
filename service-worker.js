@@ -1,7 +1,7 @@
 // Applicatienaam, moet consistent blijven.
 var APP_PREFIX = "CountdownTimer_";
 // Cache version.
-var VERSION = "Version_01";
+var VERSION = "Version_02";
 // Cache naam + versie.
 var cacheName = APP_PREFIX + VERSION;
 // Aanduiden welke files er gecached moeten worden.
