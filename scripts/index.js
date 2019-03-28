@@ -30,7 +30,7 @@ var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 // Resterende seconden berekenen.
 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-switch (distance) {
+switch (true) {
      case (days >= 1):
           importSidebarContent();
           console.log("Days");
