@@ -91,26 +91,6 @@ function emptyTimeSetting() {
      document.getElementById("seconds2").innerHTML = "seconds left";
 }
 
-// // Geeft de resterende tijd weer in de nog-in-te-vullen timer.
-// function showTimeSetting() {
-//      document.getElementById("days").innerHTML = window.localStorage.getItem(
-//           "timerSettingDays"
-//      );
-//      document.getElementById("days2").innerHTML = " days,";
-//      document.getElementById("hours").innerHTML = window.localStorage.getItem(
-//           "timerSettingHours"
-//      );
-//      document.getElementById("hours2").innerHTML = " hours, ";
-//      document.getElementById("minutes").innerHTML = window.localStorage.getItem(
-//           "timerSettingMinutes"
-//      );
-//      document.getElementById("minutes2").innerHTML = " minutes and ";
-//      document.getElementById("seconds").innerHTML = window.localStorage.getItem(
-//           "timerSettingSeconds"
-//      );
-//      document.getElementById("seconds2").innerHTML = " seconds left";
-// }
-
 // Geeft de resterende tijd weer in de nog-in-te-vullen timer.
 function showTimeSetting() {
      document.getElementById("days").innerHTML = window.localStorage.getItem(
