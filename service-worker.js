@@ -5,7 +5,6 @@ var VERSION = "Version_01";
 // Cache naam + versie.
 var cacheName = APP_PREFIX + VERSION;
 // Aanduiden welke files er gecached moeten worden.
-// Soms krijg ik een error in de console (Uncaught (in promise) TypeError: Request failed). Om dat op te lossen kan je de cacheFiles eens commenteren => opslaan => laden in het browser => commentatiëring wegdoen => opslaan => browser refreshen.
 var cacheFiles = [
      "/Countdown-timer/",
      "/Countdown-timer/index.html",
