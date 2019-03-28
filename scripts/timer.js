@@ -71,21 +71,6 @@ Notification.requestPermission().then(function(result) {
      // Do something with the granted permission.
 });
 
-// const askPermission = () => {
-//      return new Promise((resolve, reject) => {
-//           const permissionResult = Notification.requestPermission((result) => {
-//                resolve(result);
-//           });
-//           if (permissionResult) {
-//                permissionResult.then(resolve, reject);
-//           }
-//      }).then((permissionResult) => {
-//           if (permissionResult !== 'granted') {
-//                throw new Error('Permission denied');
-//           }
-//      });
-// };
-
 // Plaatst een lege teller in op de pagina om weer te geven dat er geen timer aan het aftellen is.
 function importMainContent1() {
      document.getElementById("main").innerHTML =
