@@ -11,8 +11,10 @@ function importSidebarContent() {
 
 // Zet de timer placeholder op 0.
 function emptySidebarTimeSetting() {
-     if (document.getElementById("date") && document.getElementById("date-hour")) {
+     if (document.getElementById("date")) {
           document.getElementById("date").innerHTML = "0 ";
+     }
+     if (document.getElementById("date-hour")) {
           document.getElementById("date-hour").innerHTML = "days";
      }
 }

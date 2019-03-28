@@ -70,64 +70,103 @@ Notification.requestPermission().then(function(result) {
 
 // Plaatst een lege teller in op de pagina om weer te geven dat er geen timer aan het aftellen is.
 function importMainContent1() {
-     document.getElementById("main").innerHTML =
-          '<div class="active-counter"><div class="counter-2"><h2><span class="days2" id="days"></span><span class="day-hour2" id="days2"></span><br><span class="hours2" id="hours"></span><span class="hour-minutes2" id="hours2"></span><span class="hours2" id="minutes"></span><span class="hour-minutes2" id="minutes2"></span><span class="hours2" id="seconds"></span><span class="hour-minutes2" id="seconds2"></span></h2><h3 class="h3Kleiner">until release</h3></div><div class="set-counter"><h3>Set a timer for your release.</h3><form><input type="datetime-local" id="setTimer" name="timeSet"><input type="button" value="Start" id="calculateTime" class="random-timer"></form></div></div>';
+     if (document.getElementById("main")) {
+          document.getElementById("main").innerHTML =
+               '<div class="active-counter"><div class="counter-2"><h2><span class="days2" id="days"></span><span class="day-hour2" id="days2"></span><br><span class="hours2" id="hours"></span><span class="hour-minutes2" id="hours2"></span><span class="hours2" id="minutes"></span><span class="hour-minutes2" id="minutes2"></span><span class="hours2" id="seconds"></span><span class="hour-minutes2" id="seconds2"></span></h2><h3 class="h3Kleiner">until release</h3></div><div class="set-counter"><h3>Set a timer for your release.</h3><form><input type="datetime-local" id="setTimer" name="timeSet"><input type="button" value="Start" id="calculateTime" class="random-timer"></form></div></div>';
+     }
 }
 
 // Plaatst een teller in de pagina die nog opgevuld moet worden met de resterende tijd.
 function importMainContent2() {
-     document.getElementById("main").innerHTML =
-          '<div class="active-counter"><div class="counter-1"><h2><span class="days" id="days"></span><span class="day-hour" id="days2"></span><br><span class="hours" id="hours"></span><span class="hour-minutes" id="hours2"></span><span class="hours" id="minutes"></span><span class="hour-minutes" id="minutes2"></span><span class="hours" id="seconds"></span><span class="hour-minutes" id="seconds2"></span></h2><h3>until release</h3></div></div>';
+     if (document.getElementById("main")) {
+          document.getElementById("main").innerHTML =
+               '<div class="active-counter"><div class="counter-1"><h2><span class="days" id="days"></span><span class="day-hour" id="days2"></span><br><span class="hours" id="hours"></span><span class="hour-minutes" id="hours2"></span><span class="hours" id="minutes"></span><span class="hour-minutes" id="minutes2"></span><span class="hours" id="seconds"></span><span class="hour-minutes" id="seconds2"></span></h2><h3>until release</h3></div></div>';
+     }
 }
 
 // Zet de timer placeholder op 0.
 function emptyTimeSetting() {
-     document.getElementById("days").innerHTML = "0 ";
-     document.getElementById("days2").innerHTML = "days,";
-     document.getElementById("hours").innerHTML = "0 ";
-     document.getElementById("hours2").innerHTML = "hours, ";
-     document.getElementById("minutes").innerHTML = "0 ";
-     document.getElementById("minutes2").innerHTML = "minutes and ";
-     document.getElementById("seconds").innerHTML = "0 ";
-     document.getElementById("seconds2").innerHTML = "seconds left";
+     if (document.getElementById("days")) {
+          document.getElementById("days").innerHTML = "0 ";
+     }
+     if (document.getElementById("days2")) {
+          document.getElementById("days2").innerHTML = "days,";
+     }
+     if (document.getElementById("hours")) {
+          document.getElementById("hours").innerHTML = "0 ";
+     }
+     if (document.getElementById("hours2")) {
+          document.getElementById("hours2").innerHTML = "hours, ";
+     }
+     if (document.getElementById("minutes")) {
+          document.getElementById("minutes").innerHTML = "0 ";
+     }
+     if (document.getElementById("minutes")) {
+          document.getElementById("minutes").innerHTML = "0 ";
+     }
+     if (document.getElementById("minutes2")) {
+          document.getElementById("minutes2").innerHTML = "minutes and ";
+     }
+     if (document.getElementById("seconds")) {
+          document.getElementById("seconds").innerHTML = "0 ";
+     }
+     if (document.getElementById("seconds2")) {
+          document.getElementById("seconds2").innerHTML = "seconds left";
+     }
 }
 
 // Geeft de resterende tijd weer in de nog-in-te-vullen timer.
 function showTimeSetting() {
-     document.getElementById("days").innerHTML = window.localStorage.getItem(
-          "timerSettingDays"
-     );
-     if (window.localStorage.getItem("timerSettingDays") == 1) {
-          document.getElementById("days2").innerHTML = " day, ";
-     } else {
-          document.getElementById("days2").innerHTML = " days, ";
+     if (document.getElementById("days")) {
+          document.getElementById("days").innerHTML = window.localStorage.getItem(
+               "timerSettingDays"
+          );
+     }
+     if (document.getElementById("days2")) {
+          if (window.localStorage.getItem("timerSettingDays") == 1) {
+               document.getElementById("days2").innerHTML = " day, ";
+          } else {
+               document.getElementById("days2").innerHTML = " days, ";
+          }
      }
 
-     document.getElementById("hours").innerHTML = window.localStorage.getItem(
-          "timerSettingHours"
-     );
-     if (window.localStorage.getItem("timerSettingHours") == 1) {
-          document.getElementById("hours2").innerHTML = " hour, ";
-     } else {
-          document.getElementById("hours2").innerHTML = " hours, ";
+     if (document.getElementById("hours")) {
+          document.getElementById("hours").innerHTML = window.localStorage.getItem(
+               "timerSettingHours"
+          );
+     }
+     if (document.getElementById("hours2")) {
+          if (window.localStorage.getItem("timerSettingHours") == 1) {
+               document.getElementById("hours2").innerHTML = " hour, ";
+          } else {
+               document.getElementById("hours2").innerHTML = " hours, ";
+          }
      }
 
-     document.getElementById("minutes").innerHTML = window.localStorage.getItem(
-          "timerSettingMinutes"
-     );
-     if (window.localStorage.getItem("timerSettingMinutes") == 1) {
-          document.getElementById("minutes2").innerHTML = " minute and ";
-     } else {
-          document.getElementById("minutes2").innerHTML = " minutes and ";
+     if (document.getElementById("minutes")) {
+          document.getElementById("minutes").innerHTML = window.localStorage.getItem(
+               "timerSettingMinutes"
+          );
+     }
+     if (document.getElementById("minutes2")) {
+          if (window.localStorage.getItem("timerSettingMinutes") == 1) {
+               document.getElementById("minutes2").innerHTML = " minute and ";
+          } else {
+               document.getElementById("minutes2").innerHTML = " minutes and ";
+          }
      }
 
-     document.getElementById("seconds").innerHTML = window.localStorage.getItem(
-          "timerSettingSeconds"
-     );
-     if (window.localStorage.getItem("timerSettingSeconds") == 1) {
-          document.getElementById("seconds2").innerHTML = " second left";
-     } else {
-          document.getElementById("seconds2").innerHTML = " seconds left";
+     if (document.getElementById("seconds")) {
+          document.getElementById("seconds").innerHTML = window.localStorage.getItem(
+               "timerSettingSeconds"
+          );
+     }
+     if (document.getElementById("seconds2")) {
+          if (window.localStorage.getItem("timerSettingSeconds") == 1) {
+               document.getElementById("seconds2").innerHTML = " second left";
+          } else {
+               document.getElementById("seconds2").innerHTML = " seconds left";
+          }
      }
 }
 
@@ -184,7 +223,9 @@ function isItDoneYet() {
           clearInterval(timer);
 
           // Plaatst de datum van vandaag in de form als placeholder.
-          document.getElementById("setTimer").value = today;
+          if (document.getElementById("setTimer")) {
+               document.getElementById("setTimer").value = today;
+          }
 
           // Wist de localstorage.
           localStorage.removeItem("timerSetting");
@@ -325,7 +366,9 @@ var today =
      currentMinute;
 
 // Plaatst de datum van vandaag in de form als placeholder.
-document.getElementById("setTimer").value = today;
+if (document.getElementById("setTimer")) {
+     document.getElementById("setTimer").value = today;
+}
 
 // ---------------------- Date format ---------------------- \\
 
