@@ -33,11 +33,11 @@ function notificationTimerEnd() {
      // Controleert of de browser compatibel is.
      if (!("Notification" in window)) {
           console.log("This browser does not support notifications.");
-     // Controleert of er toestemming is gegeven.
+          // Controleert of er toestemming is gegeven.
      } else if (Notification.permission === "granted") {
           // Laat een notificatie zien.
           notify();
-     // Vraagt toestemming als die nog niet gegeven is.
+          // Vraagt toestemming als die nog niet gegeven is.
      } else if (Notification.permission !== "denied") {
           Notification.requestPermission(function(permission) {
                // Als deze gegeven is, dan opent de notificatie.
@@ -52,9 +52,20 @@ function notificationTimerEnd() {
 // ---------------------- Push API ---------------------- \\
 
 // Zie https://blog.sessionstack.com/how-javascript-works-the-mechanics-of-web-push-notifications-290176c5c55d voor meer info.
-if ('PushManager' in window) {
-     console.log("[PushManager] PushManager is supported.");
-} else {
-     // Push wordt niet ondersteunt, verberg of verwijder UI.
-     console.log("[PushManager] PushManager is not supported.");
-}
+// if ('PushManager' in window) {
+//      console.log("[PushManager] PushManager is supported.");
+//
+//      var subscribeOptions = {
+//           userVisibleOnly: true,
+//           applicationServerKey: btoa(
+//                // Key is gegenereerd op https://web-push-codelab.glitch.me/.
+//                "BPzDwuNeR2T3NB6Mmlo8y35uwH-qTgPKfrcDuUVdD9Jptr6HNZQ03HvXB4v7AXbpu-ovwxscqk1oA-pWpdiPGtY"
+//           )
+//      };
+//
+//      registration.pushManager.subscribe(subscribeOptions);
+//
+// } else {
+//      // Push wordt niet ondersteunt, verberg of verwijder UI.
+//      console.log("[PushManager] PushManager is not supported.");
+// }

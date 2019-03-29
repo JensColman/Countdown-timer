@@ -30,6 +30,11 @@ console.log(
      consoleCss1,
      "- Een knop maken op de index.html om een random tijd in te stellen."
 );
+console.log(
+     "%c %s",
+     consoleCss1,
+     "- Wanneer een challenge is aangeklikt, dient deze gemarkeerd te worden als 'Challenge completed'."
+);
 
 // End to do
 //console.log("");
