@@ -53,13 +53,3 @@ var get = function(url) {
 //   .catch(function(err) {
 //     console.log("Error", err);
 // });
-
-// ---------------------- Push API ---------------------- \\
-
-// Zie https://blog.sessionstack.com/how-javascript-works-the-mechanics-of-web-push-notifications-290176c5c55d voor meer info.
-if ('PushManager' in window) {
-     console.log("[PushManager] PushManager is supported.");
-} else {
-     // Push wordt niet ondersteunt, verberg of verwijder UI.
-     console.log("[PushManager] PushManager is not supported.");
-}
