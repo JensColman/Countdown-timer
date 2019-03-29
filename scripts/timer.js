@@ -28,11 +28,6 @@ console.log(
 console.log(
      "%c %s",
      consoleCss1,
-     "- Het font van de timer in de sidebar verkleinen, ook die van de hoofdtimer. Best proportioneel laten schalen, relatief tot de breedte van the parent."
-);
-console.log(
-     "%c %s",
-     consoleCss1,
      "- Een knop maken op de index.html om een random tijd in te stellen."
 );
 

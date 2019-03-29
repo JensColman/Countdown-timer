@@ -5,7 +5,7 @@
 // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
 function importSidebarContent() {
      if (document.getElementById("sidebar")) {
-          document.getElementById("sidebar").innerHTML = '<h5><span id="date"></span><span id="date-hour"></span><br></h5><h6>remaining</h6>';
+          document.getElementById("sidebar").innerHTML = '<h5 id="sidebarTimer"><span id="date"></span><span id="date-hour"></span><br></h5><h6 id="sidebarTimer2">remaining</h6>';
      }
 }
 
@@ -158,6 +158,8 @@ if (localStorage.getItem("timerSetting") === null) {
      importSidebarContent();
      // Zet de timer placeholder op 0.
      emptySidebarTimeSetting();
+     // Make h5 en h6 fontsize relative to the width of the parent.
+     changeTextSize();
 } else {
      // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
      importSidebarContent();
@@ -169,5 +171,7 @@ if (localStorage.getItem("timerSetting") === null) {
           showTimeSettingSidebar();
           // Bereken of de timer al afgelopen is.
           isItDoneYet2();
+          // Make h5 en h6 fontsize relative to the width of the parent.
+          changeTextSize();
      }, 1000);
 }

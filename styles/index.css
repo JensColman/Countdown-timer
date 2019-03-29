@@ -94,6 +94,11 @@ h5 {
 	font-size: 2em;
 	text-align: center;
 	margin: 0;
+	display: inline-block;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%);
+	white-space: nowrap;
 }
 
 h6 {
@@ -101,6 +106,13 @@ h6 {
 	font-size: 1.3em;
 	text-align: center;
 	margin: 0;
+	margin-top: -5px;
+	display: inline-block;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%);
+	white-space: nowrap;
+	color: tomato;
 }
 /***********************************************************************/
 /***********************************************************************/
@@ -122,10 +134,11 @@ h6 {
 }
 
 .sidebar {
-	width: calc(20% - 25px);
+	width: calc(20% - 60px);
 	position: absolute;
 	display: inline-block;
-	padding: 5px 10px;
+	margin: 5px 30px;
+	float: right;
 }
 /***********************************************************************/
 /***********************************************************************/
