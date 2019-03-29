@@ -32,7 +32,7 @@ function showTimeSettingSidebar() {
                     document.getElementById("date-hour").innerHTML = window.localStorage.getItem("timerSettingDays") + " days";
                }
           }
-          console.log(window.localStorage.getItem("timerSettingDays"));
+          //console.log(window.localStorage.getItem("timerSettingDays"));
 
      } else if (window.localStorage.getItem("timerSettingDays") <= 0 && window.localStorage.getItem("timerSettingHours") >= 1) {
           // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
@@ -44,7 +44,7 @@ function showTimeSettingSidebar() {
                     document.getElementById("date-hour").innerHTML = window.localStorage.getItem("timerSettingHours") + " hours";
                }
           }
-          console.log(window.localStorage.getItem("timerSettingHours"));
+          //console.log(window.localStorage.getItem("timerSettingHours"));
 
      } else if (window.localStorage.getItem("timerSettingHours") <= 0 && window.localStorage.getItem("timerSettingMinutes") >= 1) {
           // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
@@ -56,7 +56,7 @@ function showTimeSettingSidebar() {
                     document.getElementById("date-hour").innerHTML = window.localStorage.getItem("timerSettingMinutes") + " minutes";
                }
           }
-          console.log(window.localStorage.getItem("timerSettingMinutes"));
+          //console.log(window.localStorage.getItem("timerSettingMinutes"));
 
      } else if (window.localStorage.getItem("timerSettingMinutes") <= 0 && window.localStorage.getItem("timerSettingSeconds") >= 1) {
           // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
@@ -72,7 +72,7 @@ function showTimeSettingSidebar() {
 
      } else {
 
-          console.log("Niets");
+          //console.log("Niets");
      }
 }
 
@@ -150,14 +150,7 @@ function isItDoneYet2() {
      }
 }
 
-
-// Uitzoeken hoe je de notificaties die je krijgt als je de pagina herlaad kunt uitzetten. En alleen laat zien als de timer is afgelopen.
-// Eventueel gebruik maken van dezelfde functies als timer.js
-
-
-
-
-
+// ---------------------- Sidebar timer ---------------------- \\
 
 // Controleert in de localstorage of er een datum is ingesteld in "timersetting".
 if (localStorage.getItem("timerSetting") === null) {
