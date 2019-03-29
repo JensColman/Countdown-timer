@@ -71,40 +71,98 @@ function showTimeSettingSidebar() {
           console.log(window.localStorage.getItem("timerSettingSeconds"));
 
      } else {
+
+          console.log("Niets");
+     }
+}
+
+// Bereken of de timer al afgelopen is.
+function isItDoneYet2() {
+     // Parsed de ingestelde tijd om te kunnen gebruiken tijdens de bewerking.
+     var countdownDate4 = Date.parse(window.localStorage.getItem("timerSetting"));
+     // Berekenen hoeveel tijd er tussen de ingestelde- en de eigen tijd zit.
+     var distance = countdownDate4 - now;
+
+     console.log("Eigen tijd in nummers: " + now);
+     console.log("Ingestelde tijd in nummers: " + countdownDate4);
+     console.log("Verschil tussen de ingestelde- en de eigen tijd: " + distance);
+     console.log("");
+
+     // Resterende dagen berekenen.
+     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+     // Resterende uren berekenen.
+     var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+     );
+     // Resterende minuten berekenen.
+     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+     // Resterende seconden berekenen.
+     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+     // Logged de resterende tijd in de console.
+     console.log(
+          "Resterende dagen: " + window.localStorage.getItem("timerSettingDays")
+     );
+     console.log(
+          "Resterende uren: " + window.localStorage.getItem("timerSettingHours")
+     );
+     console.log(
+          "Resterende minuten: " +
+          window.localStorage.getItem("timerSettingMinutes")
+     );
+     console.log(
+          "Resterende seconden: " +
+          window.localStorage.getItem("timerSettingSeconds")
+     );
+     console.log("");
+
+     // Controleert of de timer is afgelopen.
+     if (distance < 0) {
           // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
           importSidebarContent();
           // Zet de timer placeholder op 0.
           emptySidebarTimeSetting();
+          console.log("Time's up");
+          console.log("");
+
           // Reset de timer.
           clearInterval(timer2);
+
           // Wist de localstorage.
           localStorage.removeItem("timerSetting");
           localStorage.removeItem("timerSettingDays");
           localStorage.removeItem("timerSettingHours");
           localStorage.removeItem("timerSettingMinutes");
           localStorage.removeItem("timerSettingSeconds");
-          // // Geeft een notificatie wanneer de timer gestopt is.
-          // notificationTimerEnd();
-          console.log("Niets");
+
+          // Geeft een notificatie wanneer de timer gestopt is.
+          notificationTimerEnd();
+          // Herlaad de pagina om een nieuwe timer in te kunnen stellen.
+          //window.location.reload();
+     } else {
+          // Wordt uitgevoerd als er nog meer dan 1 seconde resteert.
+          if (seconds >= 1) {
+               // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
+               importSidebarContent();
+               // Berekend het enkelvoud of meervoud om te plaatsen in de HTML.
+               showTimeSettingSidebar();
+          }
      }
 }
 
 
 // Uitzoeken hoe je de notificaties die je krijgt als je de pagina herlaad kunt uitzetten. En alleen laat zien als de timer is afgelopen.
+// Eventueel gebruik maken van dezelfde functies als timer.js
 
 
 
 
 
-var timer2 = setInterval(function() {
-     // Resterende tijd berekenen en opslaan in localstorage.
-     calculateRestingTime();
-     // Berekend het enkelvoud of meervoud om te plaatsen in de HTML.
-     showTimeSettingSidebar();
-}, 1000);
 
 // Controleert in de localstorage of er een datum is ingesteld in "timersetting".
 if (localStorage.getItem("timerSetting") === null) {
+     // Plaatst een teller sidebar in de pagina die nog opgevuld moet worden met de resterende tijd.
+     importSidebarContent();
      // Zet de timer placeholder op 0.
      emptySidebarTimeSetting();
 } else {
@@ -116,5 +174,7 @@ if (localStorage.getItem("timerSetting") === null) {
           calculateRestingTime();
           // Berekend het enkelvoud of meervoud om te plaatsen in de HTML.
           showTimeSettingSidebar();
+          // Bereken of de timer al afgelopen is.
+          isItDoneYet2();
      }, 1000);
 }
