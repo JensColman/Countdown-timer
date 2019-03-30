@@ -1,36 +1,5 @@
 /*jshint esversion: 6 */
 
-// ---------------------- Firebase server ---------------------- \\
-
-// Niet vergeten om de beveiliging van de database terug aan te zetten: https://firebase.google.com/docs/web/setup.
-
-// Initialize Firebase.
-var config = {
-     apiKey: "AIzaSyDpyti5var4iXdnKG_EIpAZgTKQRnjFLps",
-     authDomain: "countdown-timer-9db4d.firebaseapp.com",
-     databaseURL: "https://countdown-timer-9db4d.firebaseio.com",
-     projectId: "countdown-timer-9db4d",
-     storageBucket: "countdown-timer-9db4d.appspot.com",
-     messagingSenderId: "70274656018"
-};
-firebase.initializeApp(config);
-
-const messaging = firebase.messaging();
-
-
-messaging.requestPermission().then(function() {
-     console.log("[Firebase] Permission granted.");
-     return messaging.getToken();
-}).then(function(token) {
-     console.log(token);
-}).catch(function(err) {
-     console.log(err);
-});
-
-messaging.onMessage(function(payload) {
-     console.log("onMessage: ", payload);
-});
-
 // ---------------------- Serviceworker ---------------------- \\
 
 // Hiermee kan de timer verder lopen als je geen internet meer hebt.
@@ -49,6 +18,38 @@ if ("serviceWorker" in navigator) {
                console.log("[serviceWorker] Failed to register. ", err);
           });
 }
+
+// ---------------------- Firebase server ---------------------- \\
+
+// Niet vergeten om de beveiliging van de database terug aan te zetten: https://firebase.google.com/docs/web/setup.
+
+// Initialize Firebase.
+var config = {
+     apiKey: "AIzaSyDpyti5var4iXdnKG_EIpAZgTKQRnjFLps",
+     authDomain: "countdown-timer-9db4d.firebaseapp.com",
+     databaseURL: "https://countdown-timer-9db4d.firebaseio.com",
+     projectId: "countdown-timer-9db4d",
+     storageBucket: "countdown-timer-9db4d.appspot.com",
+     messagingSenderId: "70274656018"
+};
+
+firebase.initializeApp(config);
+
+const messaging = firebase.messaging();
+
+
+messaging.requestPermission().then(function() {
+     console.log("[Firebase] Permission granted.");
+     return messaging.getToken();
+}).then(function(token) {
+     console.log(token);
+}).catch(function(err) {
+     console.log(err);
+});
+
+messaging.onMessage(function(payload) {
+     console.log("onMessage: ", payload);
+});
 
 // ---------------------- HTTP request ---------------------- \\
 
