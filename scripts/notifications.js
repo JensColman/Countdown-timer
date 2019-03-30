@@ -4,7 +4,7 @@
 
 // Niet vergeten om de beveiliging van de database terug aan te zetten: https://firebase.google.com/docs/web/setup.
 
-// Initialize Firebase
+// Initialize Firebase.
 var config = {
      apiKey: "AIzaSyDpyti5var4iXdnKG_EIpAZgTKQRnjFLps",
      authDomain: "countdown-timer-9db4d.firebaseapp.com",
@@ -25,6 +25,10 @@ messaging.requestPermission().then(function() {
      console.log(token);
 }).catch(function(err) {
      console.log(err);
+});
+
+messaging.onMessage(function(payload) {
+     console.log("onMessage: ", payload);
 });
 
 // ---------------------- Notifications ---------------------- \\
