@@ -17,8 +17,8 @@ const messaging = firebase.messaging();
 
 
 // function requestFirebasePermission() {
-     messaging.requestPermission().then(function(result) {
-          console.log("[Firebase] Permission granted." + result);
+     messaging.requestPermission().then(function() {
+          console.log("[Firebase] Permission granted.");
           return messaging.getToken();
      }).then(function(token) {
           console.log(token);
