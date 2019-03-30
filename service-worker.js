@@ -12,9 +12,11 @@ var cacheFiles = [
      "/Countdown-timer/extraIdeas.html",
      "/Countdown-timer/usePoints.html",
      "/Countdown-timer/videoResources.html",
-     "/Countdown-timer/scripts/index.js",
+     "/Countdown-timer/scripts/cacheSaver.js",
+     "/Countdown-timer/scripts/notifications.js",
+     "/Countdown-timer/scripts/sidebar.js",
+     "/Countdown-timer/scripts/styling.js",
      "/Countdown-timer/scripts/timer.js",
-     "/Countdown-timer/scripts/serviceWorkerCode.js",
      "/Countdown-timer/styles/index.css",
      "https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,700"
 ];
