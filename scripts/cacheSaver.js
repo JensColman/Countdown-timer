@@ -1,19 +1,5 @@
 /*jshint esversion: 6 */
 
-// Initialize Firebase.
-var config = {
-     apiKey: "AIzaSyDpyti5var4iXdnKG_EIpAZgTKQRnjFLps",
-     authDomain: "countdown-timer-9db4d.firebaseapp.com",
-     databaseURL: "https://countdown-timer-9db4d.firebaseio.com",
-     projectId: "countdown-timer-9db4d",
-     storageBucket: "countdown-timer-9db4d.appspot.com",
-     messagingSenderId: "70274656018"
-};
-
-firebase.initializeApp(config);
-
-const messaging = firebase.messaging();
-
 // ---------------------- Serviceworker ---------------------- \\
 
 // Hiermee kan de timer verder lopen als je geen internet meer hebt.
@@ -26,7 +12,6 @@ if ("serviceWorker" in navigator) {
           })
           .then(function(registration) {
                console.log("[serviceWorker] Registered. ");
-               messaging.useServiceWorker(registration);
           })
           .catch(function(err) {
                console.log("[serviceWorker] Failed to register. ", err);
