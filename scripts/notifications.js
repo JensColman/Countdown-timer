@@ -18,6 +18,15 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 
+navigator.serviceWorker.register('/Countdown-timer/firebase-messaging-sw.js')
+     .then(function(registration) {
+          console.log("[Firebase serviceWorker] Registered. ");
+          messaging.useServiceWorker(registration);
+     })
+     .catch(function(err) {
+          console.log("[Firebase serviceWorker] Failed to register. ", err);
+     });
+
 
 messaging.requestPermission().then(function() {
      console.log("[Firebase] Permission granted.");
@@ -28,9 +37,9 @@ messaging.requestPermission().then(function() {
      console.log(err);
 });
 
-messaging.onMessage(function(payload) {
-     console.log("onMessage: ", payload);
-});
+// messaging.onMessage(function(payload) {
+//      console.log("onMessage: ", payload);
+// });
 
 // ---------------------- Notifications ---------------------- \\
 
