@@ -23,6 +23,8 @@ messaging.requestPermission().then(function() {
      return messaging.getToken();
 }).then(function(token) {
      console.log(token);
+}).catch(function(err) {
+     console.log(err);
 });
 
 // ---------------------- Notifications ---------------------- \\
