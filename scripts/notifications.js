@@ -2,7 +2,7 @@
 
 // ---------------------- Firebase server ---------------------- \\
 
-// Niet vergeten om de beveiliging terug aan te zetten: https://firebase.google.com/docs/web/setup.
+// Niet vergeten om de beveiliging van de database terug aan te zetten: https://firebase.google.com/docs/web/setup.
 
 // Initialize Firebase
 var config = {
@@ -14,9 +14,6 @@ var config = {
      messagingSenderId: "70274656018"
 };
 firebase.initializeApp(config);
-
-var dbRef = firebase.database().ref().child("text");
-
 
 const messaging = firebase.messaging();
 
