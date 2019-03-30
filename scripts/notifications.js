@@ -2,30 +2,33 @@
 
 // ---------------------- Firebase server ---------------------- \\
 
+// Niet vergeten om de beveiliging terug aan te zetten: https://firebase.google.com/docs/web/setup.
+
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyDpyti5var4iXdnKG_EIpAZgTKQRnjFLps",
-  authDomain: "countdown-timer-9db4d.firebaseapp.com",
-  databaseURL: "https://countdown-timer-9db4d.firebaseio.com",
-  projectId: "countdown-timer-9db4d",
-  storageBucket: "countdown-timer-9db4d.appspot.com",
-  messagingSenderId: "70274656018"
+     apiKey: "AIzaSyDpyti5var4iXdnKG_EIpAZgTKQRnjFLps",
+     authDomain: "countdown-timer-9db4d.firebaseapp.com",
+     databaseURL: "https://countdown-timer-9db4d.firebaseio.com",
+     projectId: "countdown-timer-9db4d",
+     storageBucket: "countdown-timer-9db4d.appspot.com",
+     messagingSenderId: "70274656018"
 };
 firebase.initializeApp(config);
+
+var dbRef = firebase.database().ref().child("text");
+
 
 const messaging = firebase.messaging();
 
 
-// function requestFirebasePermission() {
-     messaging.requestPermission().then(function() {
-          console.log("[Firebase] Permission granted.");
-          return messaging.getToken();
-     }).then(function(token) {
-          console.log(token);
-     }).catch(function(err) {
-          console.log("[Firebase] An error has occured.");
-     });
-// }
+messaging.requestPermission().then(function() {
+     console.log("[Firebase] Permission granted.");
+     return messaging.getToken();
+}).then(function(token) {
+     console.log(token);
+}).catch(function(err) {
+     console.log("[Firebase] An error has occured.");
+});
 
 // ---------------------- Notifications ---------------------- \\
 
