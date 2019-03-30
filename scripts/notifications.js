@@ -23,7 +23,7 @@ const messaging = firebase.messaging();
      }).then(function(token) {
           console.log(token);
      }).catch(function(err) {
-          console.log("[Firebase] Permission wasn't granted.");
+          console.log("[Firebase] An error has occured.");
      });
 // }
 
