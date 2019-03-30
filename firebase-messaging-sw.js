@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
-// importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js");
-// importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js");
+importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js");
 
 
 
@@ -27,6 +27,7 @@ var config = {
      storageBucket: "countdown-timer-9db4d.appspot.com",
      messagingSenderId: "70274656018"
 };
+
 firebase.initializeApp(config);
 
 const messaging = firebase.messaging();

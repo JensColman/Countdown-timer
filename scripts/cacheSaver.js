@@ -1,5 +1,19 @@
 /*jshint esversion: 6 */
 
+// Initialize Firebase.
+var config = {
+     apiKey: "AIzaSyDpyti5var4iXdnKG_EIpAZgTKQRnjFLps",
+     authDomain: "countdown-timer-9db4d.firebaseapp.com",
+     databaseURL: "https://countdown-timer-9db4d.firebaseio.com",
+     projectId: "countdown-timer-9db4d",
+     storageBucket: "countdown-timer-9db4d.appspot.com",
+     messagingSenderId: "70274656018"
+};
+
+firebase.initializeApp(config);
+
+const messaging = firebase.messaging();
+
 // ---------------------- Serviceworker ---------------------- \\
 
 // Hiermee kan de timer verder lopen als je geen internet meer hebt.
@@ -7,12 +21,12 @@
 if ("serviceWorker" in navigator) {
      // Gebruik een absolute path als je gebruik maakt van Github, anders werkt het niet! Zie https://gist.github.com/kosamari/7c5d1e8449b2fbc97d372675f16b566e voor meer info.
      navigator.serviceWorker
-          .register("/Countdown-timer/service-worker.js" + "/Countdown-timer/firebase-messaging-sw.js", {
+          .register("/Countdown-timer/service-worker.js", {
                scope: "/Countdown-timer/"
           })
           .then(function(registration) {
                console.log("[serviceWorker] Registered. ");
-               firebase.messaging().useServiceWorker(registration);
+               messaging.useServiceWorker(registration);
           })
           .catch(function(err) {
                console.log("[serviceWorker] Failed to register. ", err);
