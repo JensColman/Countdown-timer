@@ -12,17 +12,7 @@ if ("serviceWorker" in navigator) {
           })
           .then(function(registration) {
                console.log("[serviceWorker] Registered. ");
-
-
-
-
-
-               // Nog na te kijken of dit correct geplaatst is.
-               messaging.useServiceWorker(registration);
-
-
-
-
+               firebase.messaging().useServiceWorker(registration);
           })
           .catch(function(err) {
                console.log("[serviceWorker] Failed to register. ", err);
