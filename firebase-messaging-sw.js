@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
-// importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js");
-// importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js");
+importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js");
 
 // Initialize Firebase.
 var config = {
