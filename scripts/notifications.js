@@ -30,6 +30,7 @@ if ("serviceWorker" in navigator) {
           .then(function(registration) {
                console.log("[Firebase serviceWorker] Registered. ");
                messaging.useServiceWorker(registration);
+               console.log(registration);
           })
           .catch(function(err) {
                console.log("[Firebase serviceWorker] Failed to register. ", err);
@@ -39,7 +40,7 @@ if ("serviceWorker" in navigator) {
 messaging.requestPermission()
      .then(function() {
           console.log("[Firebase] Permission granted.");
-          return messaging.getToken().useServiceWorker('/Countdown-timer/firebase-messaging-sw.js');
+          //return messaging.getToken();
      })
      .then(function(token) {
           console.log(token);
