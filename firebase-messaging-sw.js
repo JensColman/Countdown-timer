@@ -1,22 +1,7 @@
 /*jshint esversion: 6 */
 
-importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js");
-
-
-
-// Dit zou gebruikt moeten worden, niet zeker of dit correct is.
-// Moet ik de aanstelling tot serviceWorker van hierboven dan verwijderen?
-// Deze code wordt eigenlijk al gebruikt in cacheSaver.js, alleen moet 'messaging.useServiceWorker(registration);' nog toegevoegd worden.
-// navigator.serviceWorker.register('./example/sw.js')
-//      .then((registration) => {
-//           messaging.useServiceWorker(registration);
-//
-//           // Request permission and get token.....
-//      });
-
-
-
+// importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js");
+// importScripts("https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js");
 
 // Initialize Firebase.
 var config = {
