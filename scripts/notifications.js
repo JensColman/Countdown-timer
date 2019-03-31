@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-// ---------------------- Firebase server ---------------------- \\
+// ---------------------- Firebase ---------------------- \\
 
 // Niet vergeten om de beveiliging van de database terug aan te zetten: https://firebase.google.com/docs/web/setup.
 
