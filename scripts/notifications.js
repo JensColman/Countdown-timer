@@ -19,7 +19,10 @@ firebase.initializeApp(config);
 const messaging = firebase.messaging();
 const database = firebase.database();
 
-let userToken    = null;
+// Voeg een knop toe waarbij de gebruiker kan subscriben om push notifications te ontvangen.
+// Meer info op https://css-tricks.com/implementing-push-notifications-setting-firebase/.
+
+let userToken = null;
 let isSubscribed = false;
 
 // Add the public key generated from the console here.
@@ -28,6 +31,15 @@ messaging.usePublicVapidKey("BFB3g18JS2IChDumBW_6NNzFpdsSYJZS_h1oXz-rxah3NA_32ed
 
 function initializePush() {
      userToken = localStorage.getItem("pushToken");
+     isSubscribed = userToken !== null;
+}
+
+function updateSubscriptionOnServer(token) {
+     if (isSubscribed) {
+          return database.ref('device_ids')
+               .equalTo(token)
+               .on('child_added', snapshot => snapshot.ref.remove());
+     }
 }
 
 if ("serviceWorker" in navigator) {
