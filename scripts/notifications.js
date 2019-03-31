@@ -30,12 +30,9 @@ if ("serviceWorker" in navigator) {
           .then(function(registration) {
                console.log("[Firebase serviceWorker] Registered. ");
                messaging.useServiceWorker(registration);
-               console.log(registration);
           })
           .then(function(registration) {
-               return messaging.getToken();
-          })
-          .then(function(token) {
+               var token = messaging.getToken();
                console.log(token);
           })
           .catch(function(err) {
