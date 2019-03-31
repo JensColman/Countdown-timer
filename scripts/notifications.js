@@ -29,6 +29,9 @@ navigator.serviceWorker.register('/Countdown-timer/firebase-messaging-sw.js', {
           console.log("[Firebase serviceWorker] Failed to register. ", err);
      });
 
+// De serviceworker werkt, maar niet in combinatie met de cacheSaver.js.
+// Zoek uit waarom deze 2 niet samen gaan en hoe je dit kan oplossen.
+
 
 // messaging.requestPermission().then(function() {
 //      console.log("[Firebase] Permission granted.");
