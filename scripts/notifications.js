@@ -17,6 +17,7 @@ var config = {
 firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
+const database = firebase.database();
 
 // Add the public key generated from the console here.
 // Zie https://firebase.google.com/docs/cloud-messaging/js/client
@@ -30,28 +31,10 @@ if ("serviceWorker" in navigator) {
           .then(function(registration) {
                console.log("[Firebase serviceWorker] Registered. ");
                messaging.useServiceWorker(registration);
+               initializePush();
                messaging.requestPermission()
                     .then(function() {
                          console.log("[Firebase] Permission granted.");
-                         // messaging.getToken()
-                         //      .then(function(currentToken) {
-                         //           if (currentToken) {
-                         //                sendTokenToServer(currentToken);
-                         //                updateUIForPushEnabled(currentToken);
-                         //           } else {
-                         //                // Show permission request.
-                         //                console.log('No Instance ID token available. Request permission to generate one.');
-                         //                // Show permission UI.
-                         //                updateUIForPushPermissionRequired();
-                         //                setTokenSentToServer(false);
-                         //           }
-                         //      })
-                         //      .catch(function(err) {
-                         //           console.log('An error occurred while retrieving token. ', err);
-                         //           showToken('Error retrieving Instance ID token. ', err);
-                         //           setTokenSentToServer(false);
-                         //      });
-
                          return messaging.getToken();
                     })
                     .then(function(token) {
