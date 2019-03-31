@@ -20,7 +20,7 @@ const messaging = firebase.messaging();
 
 // Add the public key generated from the console here.
 // Zie https://firebase.google.com/docs/cloud-messaging/js/client
-//messaging.usePublicVapidKey("BFB3g18JS2IChDumBW_6NNzFpdsSYJZS_h1oXz-rxah3NA_32edeR3h9S5M0bvVGR6XsV0UQ8Se3sotPxWGJ6OE");
+messaging.usePublicVapidKey("BFB3g18JS2IChDumBW_6NNzFpdsSYJZS_h1oXz-rxah3NA_32edeR3h9S5M0bvVGR6XsV0UQ8Se3sotPxWGJ6OE");
 
 if ("serviceWorker" in navigator) {
      navigator.serviceWorker
@@ -33,6 +33,25 @@ if ("serviceWorker" in navigator) {
                messaging.requestPermission()
                     .then(function() {
                          console.log("[Firebase] Permission granted.");
+                         messaging.getToken()
+                              .then(function(currentToken) {
+                                   if (currentToken) {
+                                        sendTokenToServer(currentToken);
+                                        updateUIForPushEnabled(currentToken);
+                                   } else {
+                                        // Show permission request.
+                                        console.log('No Instance ID token available. Request permission to generate one.');
+                                        // Show permission UI.
+                                        updateUIForPushPermissionRequired();
+                                        setTokenSentToServer(false);
+                                   }
+                              })
+                              .catch(function(err) {
+                                   console.log('An error occurred while retrieving token. ', err);
+                                   showToken('Error retrieving Instance ID token. ', err);
+                                   setTokenSentToServer(false);
+                              });
+
                          return messaging.getToken();
                     })
                     .then(function(token) {
