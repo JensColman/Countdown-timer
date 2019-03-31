@@ -35,6 +35,9 @@ if ("serviceWorker" in navigator) {
           .then(function(registration) {
                return messaging.getToken();
           })
+          .then(function(token) {
+               console.log(token);
+          })
           .catch(function(err) {
                console.log("[Firebase serviceWorker] Failed to register. ", err);
           });
@@ -46,7 +49,7 @@ messaging.requestPermission()
           //return messaging.getToken();
      })
      .then(function(token) {
-          console.log(token);
+          //console.log(token);
      })
      .catch(function(err) {
           console.log(err);
