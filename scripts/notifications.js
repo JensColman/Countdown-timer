@@ -36,20 +36,20 @@ if ("serviceWorker" in navigator) {
                          messaging.getToken()
                               .then(function(currentToken) {
                                    if (currentToken) {
-                                        messaging.sendTokenToServer(currentToken);
-                                        messaging.updateUIForPushEnabled(currentToken);
+                                        sendTokenToServer(currentToken);
+                                        updateUIForPushEnabled(currentToken);
                                    } else {
                                         // Show permission request.
                                         console.log('No Instance ID token available. Request permission to generate one.');
                                         // Show permission UI.
-                                        messaging.updateUIForPushPermissionRequired();
-                                        messaging.setTokenSentToServer(false);
+                                        updateUIForPushPermissionRequired();
+                                        setTokenSentToServer(false);
                                    }
                               })
                               .catch(function(err) {
                                    console.log('An error occurred while retrieving token. ', err);
-                                   messaging.showToken('Error retrieving Instance ID token. ', err);
-                                   messaging.setTokenSentToServer(false);
+                                   showToken('Error retrieving Instance ID token. ', err);
+                                   setTokenSentToServer(false);
                               });
 
                          return messaging.getToken();
