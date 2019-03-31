@@ -39,9 +39,7 @@ if ("serviceWorker" in navigator) {
 messaging.requestPermission()
      .then(function() {
           console.log("[Firebase] Permission granted.");
-          return messaging.getToken();
-     })
-     .then(function(token) {
+          messaging.getToken();
           console.log(token);
      })
      .catch(function(err) {
