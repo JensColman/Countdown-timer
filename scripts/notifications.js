@@ -39,7 +39,7 @@ if ("serviceWorker" in navigator) {
 messaging.requestPermission()
      .then(function() {
           console.log("[Firebase] Permission granted.");
-          return messaging.getToken().useServiceWorker(registration);
+          return messaging.getToken().useServiceWorker('/Countdown-timer/firebase-messaging-sw.js');
      })
      .then(function(token) {
           console.log(token);
