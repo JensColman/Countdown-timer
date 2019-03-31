@@ -50,12 +50,9 @@ if ("serviceWorker" in navigator) {
           });
 }
 
-
-
-
-// messaging.onMessage(function(payload) {
-//      console.log("onMessage: ", payload);
-// });
+messaging.onMessage(function(payload) {
+     console.log("onMessage: ", payload);
+});
 
 // ---------------------- Notifications ---------------------- \\
 
