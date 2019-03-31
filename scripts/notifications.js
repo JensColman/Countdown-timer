@@ -18,7 +18,9 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 
-navigator.serviceWorker.register('/Countdown-timer/firebase-messaging-sw.js')
+navigator.serviceWorker.register('/Countdown-timer/firebase-messaging-sw.js', {
+          scope: "/Countdown-timer/"
+     })
      .then(function(registration) {
           console.log("[Firebase serviceWorker] Registered. ");
           messaging.useServiceWorker(registration);
