@@ -19,9 +19,16 @@ firebase.initializeApp(config);
 const messaging = firebase.messaging();
 const database = firebase.database();
 
+let userToken    = null;
+let isSubscribed = false;
+
 // Add the public key generated from the console here.
 // Zie https://firebase.google.com/docs/cloud-messaging/js/client
 messaging.usePublicVapidKey("BFB3g18JS2IChDumBW_6NNzFpdsSYJZS_h1oXz-rxah3NA_32edeR3h9S5M0bvVGR6XsV0UQ8Se3sotPxWGJ6OE");
+
+function initializePush() {
+     userToken = localStorage.getItem("pushToken");
+}
 
 if ("serviceWorker" in navigator) {
      navigator.serviceWorker
@@ -31,7 +38,9 @@ if ("serviceWorker" in navigator) {
           .then(function(registration) {
                console.log("[Firebase serviceWorker] Registered. ");
                messaging.useServiceWorker(registration);
-               initializePush();
+               if (localStorage.getItem("pushToken")) {
+                    initializePush();
+               }
                messaging.requestPermission()
                     .then(function() {
                          console.log("[Firebase] Permission granted.");
@@ -39,6 +48,10 @@ if ("serviceWorker" in navigator) {
                     })
                     .then(function(token) {
                          console.log(token);
+                         updateSubscriptionOnServer(token);
+                         isSubscribed = true;
+                         userToken = token;
+                         localStorage.setItem("pushToken", token);
                     })
                     .catch(function(err) {
                          console.log(err);
