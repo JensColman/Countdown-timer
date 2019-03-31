@@ -30,6 +30,17 @@ if ("serviceWorker" in navigator) {
           .then(function(registration) {
                console.log("[Firebase serviceWorker] Registered. ");
                messaging.useServiceWorker(registration);
+               messaging.requestPermission()
+                    .then(function() {
+                         console.log("[Firebase] Permission granted.");
+                         return messaging.getToken();
+                    })
+                    .then(function(token) {
+                         console.log(token);
+                    })
+                    .catch(function(err) {
+                         console.log(err);
+                    });
           })
           .then(function(registration) {
                console.log(registration);
@@ -39,17 +50,7 @@ if ("serviceWorker" in navigator) {
           });
 }
 
-messaging.requestPermission()
-     .then(function() {
-          console.log("[Firebase] Permission granted.");
-          return messaging.getToken();
-     })
-     .then(function(token) {
-          console.log(token);
-     })
-     .catch(function(err) {
-          console.log(err);
-     });
+
 
 
 // messaging.onMessage(function(payload) {
