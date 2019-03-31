@@ -30,14 +30,14 @@ navigator.serviceWorker.register('/Countdown-timer/firebase-messaging-sw.js', {
      });
 
 
-messaging.requestPermission().then(function() {
-     console.log("[Firebase] Permission granted.");
-     return messaging.getToken();
-}).then(function(token) {
-     console.log(token);
-}).catch(function(err) {
-     console.log(err);
-});
+// messaging.requestPermission().then(function() {
+//      console.log("[Firebase] Permission granted.");
+//      return messaging.getToken();
+// }).then(function(token) {
+//      console.log(token);
+// }).catch(function(err) {
+//      console.log(err);
+// });
 
 // messaging.onMessage(function(payload) {
 //      console.log("onMessage: ", payload);
