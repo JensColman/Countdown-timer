@@ -20,13 +20,24 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 
-messaging.setBackgroundMessageHandler(function(payload) {
-     const title = "Hello World";
-     const options = {
-          body: payload.data.status
-     };
-     return self.registration.showNotification(title, options);
+self.addEventListener('notificationclick', event => {
+     event.notification.close();
+
+     event.waitUntil(
+          self.clients.openWindow('https://artofmyself.com')
+     );
 });
+
+
+
+
+// messaging.setBackgroundMessageHandler(function(payload) {
+//      const title = "Hello World";
+//      const options = {
+//           body: payload.data.status
+//      };
+//      return self.registration.showNotification(title, options);
+// });
 
 
 

@@ -77,6 +77,36 @@ function updateSubscriptionOnServer(token) {
                .equalTo(token)
                .on('child_added', snapshot => snapshot.ref.remove());
      }
+
+     database.ref('device_ids').once('value')
+          .then(snapshots => {
+               let deviceExists = false;
+
+               snapshots.forEach(childSnapshot => {
+                    if (childSnapshot.val() === token) {
+                         deviceExists = true;
+                         return console.log('Device already registered.');
+                    }
+
+               });
+
+               if (!deviceExists) {
+                    console.log('Device subscribed');
+                    return database.ref('device_ids').push(token);
+               }
+          });
+}
+
+function unsubscribeUser() {
+     messaging.deleteToken(userToken)
+          .then(() => {
+               updateSubscriptionOnServer(userToken);
+               isSubscribed = false;
+               userToken = null;
+               localStorage.removeItem('pushToken');
+               updateBtn();
+          })
+          .catch(err => console.log('Error unsubscribing', err));
 }
 
 if ("serviceWorker" in navigator) {
