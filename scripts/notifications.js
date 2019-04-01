@@ -127,7 +127,7 @@ if ("serviceWorker" in navigator) {
                     })
                     .then(function(token) {
                          console.log(token);
-                         updateSubscriptionOnServer(token);
+                         // updateSubscriptionOnServer(token);
                          // isSubscribed = true;
                          // userToken = token;
                          // localStorage.setItem("pushToken", token);
