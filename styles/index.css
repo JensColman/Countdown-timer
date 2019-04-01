@@ -114,6 +114,45 @@ h6 {
 	white-space: nowrap;
 	color: tomato;
 }
+
+/***********************************************************************/
+/***********************************************************************/
+/***** Main section styling *****/
+
+.push {
+	position: fixed;
+	width: 100vw;
+	bottom: 0px;
+	left: 0px;
+	padding: 20px 5vw;
+	background-color: #EEE;
+	color: #222;
+
+	border: 1px dotted rgba(255, 255, 255, 0.3);
+	box-sizing: border-box;
+}
+
+.pushForm {
+	display: inline-block;
+	float: right;
+}
+
+.pushTitle {
+	color: tomato;
+	margin: 0;
+	display: inline-block;
+	float: left;
+}
+
+#push-button {
+	height: 30px;
+	width: 100px;
+	background-color: tomato;
+	color: white;
+	display: inline-block;
+	float: right;
+}
+
 /***********************************************************************/
 /***********************************************************************/
 /***** Main section styling *****/

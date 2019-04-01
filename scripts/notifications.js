@@ -18,6 +18,7 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 const database = firebase.database();
+const pushBtn = document.getElementById("push-button");
 
 // Voeg een knop toe waarbij de gebruiker kan subscriben om push notifications te ontvangen.
 // Meer info op https://css-tricks.com/implementing-push-notifications-setting-firebase/.
@@ -31,8 +32,44 @@ messaging.usePublicVapidKey("BFB3g18JS2IChDumBW_6NNzFpdsSYJZS_h1oXz-rxah3NA_32ed
 
 function initializePush() {
      userToken = localStorage.getItem("pushToken");
+
      isSubscribed = userToken !== null;
+     updateBtn();
+
+     pushBtn.addEventListener("click", () => {
+          pushBtn.disabled = true;
+
+          if (isSubscribed) {
+               return unsubscribeUser();
+          }
+          return subscribeUser();
+     });
 }
+
+function updateBtn() {
+     if (Notification.permission === "denied") {
+          pushBtn.textContent = "Subscription blocked";
+          return;
+     }
+
+     pushBtn.textContent = isSubscribed ? "Unsubscribe" : "Subscribe";
+     pushBtn.disabled = false;
+}
+
+function subscribeUser() {
+     messaging.requestPermission()
+          .then(() => messaging.getToken())
+          .then(token => {
+
+               updateSubscriptionOnServer(token);
+               isSubscribed = true;
+               userToken = token;
+               localStorage.setItem('pushToken', token);
+               updateBtn();
+          })
+          .catch(err => console.log('Denied', err));
+}
+
 
 function updateSubscriptionOnServer(token) {
      if (isSubscribed) {
@@ -75,6 +112,8 @@ if ("serviceWorker" in navigator) {
           .catch(function(err) {
                console.log("[Firebase serviceWorker] Failed to register. ", err);
           });
+} else {
+     pushBtn.textContent = "Push not supported.";
 }
 
 messaging.onMessage(function(payload) {
