@@ -20,13 +20,13 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 
-self.addEventListener('notificationclick', event => {
-     event.notification.close();
-
-     event.waitUntil(
-          self.clients.openWindow("#")
-     );
-});
+// self.addEventListener('notificationclick', event => {
+//      event.notification.close();
+//
+//      event.waitUntil(
+//           self.clients.openWindow("#")
+//      );
+// });
 
 
 

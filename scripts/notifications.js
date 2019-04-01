@@ -30,84 +30,84 @@ let isSubscribed = false;
 // Zie https://firebase.google.com/docs/cloud-messaging/js/client
 messaging.usePublicVapidKey("BFB3g18JS2IChDumBW_6NNzFpdsSYJZS_h1oXz-rxah3NA_32edeR3h9S5M0bvVGR6XsV0UQ8Se3sotPxWGJ6OE");
 
-function initializePush() {
-     userToken = localStorage.getItem("pushToken");
+// function initializePush() {
+//      userToken = localStorage.getItem("pushToken");
+//
+//      isSubscribed = userToken !== null;
+//      updateBtn();
+//
+//      pushBtn.addEventListener("click", () => {
+//           pushBtn.disabled = true;
+//
+//           if (isSubscribed) {
+//                return unsubscribeUser();
+//           }
+//           return subscribeUser();
+//      });
+// }
 
-     isSubscribed = userToken !== null;
-     updateBtn();
+// function updateBtn() {
+//      if (Notification.permission === "denied") {
+//           pushBtn.textContent = "Subscription blocked";
+//           return;
+//      }
+//
+//      pushBtn.textContent = isSubscribed ? "Unsubscribe" : "Subscribe";
+//      pushBtn.disabled = false;
+// }
 
-     pushBtn.addEventListener("click", () => {
-          pushBtn.disabled = true;
-
-          if (isSubscribed) {
-               return unsubscribeUser();
-          }
-          return subscribeUser();
-     });
-}
-
-function updateBtn() {
-     if (Notification.permission === "denied") {
-          pushBtn.textContent = "Subscription blocked";
-          return;
-     }
-
-     pushBtn.textContent = isSubscribed ? "Unsubscribe" : "Subscribe";
-     pushBtn.disabled = false;
-}
-
-function subscribeUser() {
-     messaging.requestPermission()
-          .then(() => messaging.getToken())
-          .then(token => {
-
-               updateSubscriptionOnServer(token);
-               isSubscribed = true;
-               userToken = token;
-               localStorage.setItem('pushToken', token);
-               updateBtn();
-          })
-          .catch(err => console.log('Denied', err));
-}
+// function subscribeUser() {
+//      messaging.requestPermission()
+//           .then(() => messaging.getToken())
+//           .then(token => {
+//
+//                updateSubscriptionOnServer(token);
+//                isSubscribed = true;
+//                userToken = token;
+//                localStorage.setItem('pushToken', token);
+//                updateBtn();
+//           })
+//           .catch(err => console.log('Denied', err));
+// }
 
 
-function updateSubscriptionOnServer(token) {
-     if (isSubscribed) {
-          return database.ref('device_ids')
-               .equalTo(token)
-               .on('child_added', snapshot => snapshot.ref.remove());
-     }
+// function updateSubscriptionOnServer(token) {
+//      if (isSubscribed) {
+//           return database.ref('device_ids')
+//                .equalTo(token)
+//                .on('child_added', snapshot => snapshot.ref.remove());
+//      }
+//
+//      database.ref('device_ids').once('value')
+//           .then(snapshots => {
+//                let deviceExists = false;
+//
+//                snapshots.forEach(childSnapshot => {
+//                     if (childSnapshot.val() === token) {
+//                          deviceExists = true;
+//                          return console.log('Device already registered.');
+//                     }
+//
+//                });
+//
+//                if (!deviceExists) {
+//                     console.log('Device subscribed');
+//                     return database.ref('device_ids').push(token);
+//                }
+//           });
+// }
 
-     database.ref('device_ids').once('value')
-          .then(snapshots => {
-               let deviceExists = false;
-
-               snapshots.forEach(childSnapshot => {
-                    if (childSnapshot.val() === token) {
-                         deviceExists = true;
-                         return console.log('Device already registered.');
-                    }
-
-               });
-
-               if (!deviceExists) {
-                    console.log('Device subscribed');
-                    return database.ref('device_ids').push(token);
-               }
-          });
-}
-
-function unsubscribeUser() {
-     messaging.deleteToken(userToken)
-          .then(() => {
-               updateSubscriptionOnServer(userToken);
-               isSubscribed = false;
-               userToken = null;
-               localStorage.removeItem('pushToken');
-               updateBtn();
-          })
-          .catch(err => console.log('Error unsubscribing', err));
-}
+// function unsubscribeUser() {
+//      messaging.deleteToken(userToken)
+//           .then(() => {
+//                updateSubscriptionOnServer(userToken);
+//                isSubscribed = false;
+//                userToken = null;
+//                localStorage.removeItem('pushToken');
+//                updateBtn();
+//           })
+//           .catch(err => console.log('Error unsubscribing', err));
+// }
 
 if ("serviceWorker" in navigator) {
      navigator.serviceWorker
@@ -117,9 +117,9 @@ if ("serviceWorker" in navigator) {
           .then(function(registration) {
                console.log("[Firebase serviceWorker] Registered. ");
                messaging.useServiceWorker(registration);
-               if (localStorage.getItem("pushToken")) {
-                    initializePush();
-               }
+               // if (localStorage.getItem("pushToken")) {
+               //      initializePush();
+               // }
                messaging.requestPermission()
                     .then(function() {
                          console.log("[Firebase] Permission granted.");
@@ -128,9 +128,9 @@ if ("serviceWorker" in navigator) {
                     .then(function(token) {
                          console.log(token);
                          updateSubscriptionOnServer(token);
-                         isSubscribed = true;
-                         userToken = token;
-                         localStorage.setItem("pushToken", token);
+                         // isSubscribed = true;
+                         // userToken = token;
+                         // localStorage.setItem("pushToken", token);
                     })
                     .catch(function(err) {
                          console.log(err);
@@ -142,24 +142,22 @@ if ("serviceWorker" in navigator) {
           .catch(function(err) {
                console.log("[Firebase serviceWorker] Failed to register. ", err);
           });
-} else {
-     pushBtn.textContent = "Push not supported.";
 }
 
-messaging.onMessage(payload => {
-
-    const snackbarContainer = document.querySelector('#snackbar');
-
-    let data = {
-        message: payload.notification.title,
-        timeout: 5000,
-        actionHandler() {
-            location.reload();
-        },
-        actionText: 'Reload'
-   };
-    snackbarContainer.MaterialSnackbar.showSnackbar(data);
-});
+// messaging.onMessage(payload => {
+//
+//     const snackbarContainer = document.querySelector('#snackbar');
+//
+//     let data = {
+//         message: payload.notification.title,
+//         timeout: 5000,
+//         actionHandler() {
+//             location.reload();
+//         },
+//         actionText: 'Reload'
+//    };
+//     snackbarContainer.MaterialSnackbar.showSnackbar(data);
+// });
 
 
 
