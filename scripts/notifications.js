@@ -146,9 +146,22 @@ if ("serviceWorker" in navigator) {
      pushBtn.textContent = "Push not supported.";
 }
 
-messaging.onMessage(function(payload) {
-     console.log("onMessage: ", payload);
+messaging.onMessage(payload => {
+
+    const snackbarContainer = document.querySelector('#snackbar');
+
+    let data = {
+        message: payload.notification.title,
+        timeout: 5000,
+        actionHandler() {
+            location.reload();
+        },
+        actionText: 'Reload'
+   };
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
 });
+
+
 
 // ---------------------- Notifications ---------------------- \\
 
